@@ -1,0 +1,218 @@
+input.qasm
+       ↓
+   COMPILER
+       ↓
+output.qasm
+and separately report things like gate-count reduction, circuit depth, SWAP count, routing overhead, and fidelity/error estimates.
+
+OpenQASM → parse → IR → QC1 optimization → native gate translation → QC2 placement → QC2 routing → final IR → OpenQASM
+
+
+OpenQASM source
+      │
+      ▼
+1. Parse OpenQASM
+      │
+      ▼
+2. Internal circuit representation / IR
+      │
+      ▼
+3. QC1: circuit simplification / optimization
+      │
+      ▼
+4. Gate translation / decomposition
+      │
+      ▼
+5. QC2: initial qubit placement
+      │
+      ▼
+6. QC2: routing / SWAP insertion
+      │
+      ▼
+7. Post-routing cleanup / optimization
+      │
+      ▼
+8. Scheduling / timing       [optional extension]
+      │
+      ▼
+9. Generate OpenQASM
+
+-------------------------------------------------------------------------------------------------------------------
+IBM's current Qiskit documentation describes its transpiler as operating on a graph-based DAGCircuit.
+A QuantumCircuit enters the transpiler, is converted to a DAGCircuit, passes transform that IR, and it is eventually converted back to a QuantumCircuit.
+
+ OpenQASM file
+                    │
+                    ▼
+          ┌───────────────────┐
+          │      QISKIT       │
+          │ OpenQASM parsing  │
+          └─────────┬─────────┘
+                    │
+                    ▼
+             QuantumCircuit
+                    │
+                    ▼
+             Your compiler
+        ┌─────────────────────┐
+        │                     │
+        │ QC1 optimization    │
+        │                     │
+        │ Gate translation    │
+        │                     │
+        │ QC2 placement       │
+        │                     │
+        │ QC2 routing         │
+        │                     │
+        │ Cleanup/optimization│
+        └──────────┬──────────┘
+                   │
+                   ▼
+             QuantumCircuit
+                   │
+                   ▼
+          ┌───────────────────┐
+          │      QISKIT       │
+          │ OpenQASM exporter │
+          └─────────┬─────────┘
+                    │
+                    ▼
+             output.qasm
+
+--------------------------------------------------
+Use qiskit as IR
+----------------------------------------------------
+OpenQASM
+    │
+    ▼
+Qiskit parser
+    │
+    ▼
+QuantumCircuit
+    │
+    ▼
+DAGCircuit
+═══════════════════════════════════════
+          YOUR COMPILER
+
+    QC1
+    ├─ cancellation
+    ├─ rotation merging
+    ├─ commutation
+    └─ simplification
+
+              ↓
+
+    Native gate translation
+
+              ↓
+
+    QC2
+    ├─ placement
+    ├─ routing
+    └─ SWAP insertion
+
+              ↓
+
+    Post-routing optimization
+═══════════════════════════════════════
+    │
+    ▼
+DAGCircuit
+    │
+    ▼
+QuantumCircuit
+    │
+    ▼
+OpenQASM
+-----------------------------------------------------------------------------------------
+Goal:
+emulate a portion of Qiskit's transpile()
+
+GOOD:
+
+Qiskit
+├─ parse QASM               ✓
+├─ provide QuantumCircuit   ✓
+├─ provide DAG structure    ✓
+├─ simulate circuits        ✓
+├─ provide hardware models  ✓
+└─ visualize circuits       ✓
+
+YOU
+├─ optimization rules       ✓
+├─ gate translation         ✓
+├─ placement algorithm      ✓
+├─ routing algorithm        ✓
+├─ SWAP selection           ✓
+└─ post-routing cleanup     ✓
+------------------------------------------------------------------------------------------
+qiskit transpile can be used a a benchmark
+            input.qasm
+                     │
+              ┌──────┴──────┐
+              ▼             ▼
+
+       YOUR COMPILER      QISKIT
+       ─────────────     ──────────
+       QC1 optimizer     transpiler
+       translator
+       placement
+       routing
+              │             │
+              ▼             ▼
+
+         your.qasm      qiskit.qasm
+              │             │
+              └──────┬──────┘
+                     ▼
+                 Compare
+
+metrics: gate count, 2-qubit gates, SWAPs, Depth, Compile time
+a small quantum compiler yourself and comparing your algorithms against a real industrial/open-source compiler.
+-------------------------------------------------------------------------------------------------------------
+OpenQASM
+        ↓
+Qiskit OpenQASM parser
+        ↓
+QuantumCircuit
+        ↓
+DAGCircuit / your IR
+        ↓
+══════════════════════════
+      YOUR COMPILER
+
+ QC1 circuit optimization
+        ↓
+ native gate translation
+        ↓
+ QC2 initial placement
+        ↓
+ QC2 routing
+        ↓
+ post-routing optimization
+
+══════════════════════════
+        ↓
+QuantumCircuit
+        ↓
+OpenQASM output
+
+        +
+
+Run same original circuit through
+Qiskit transpiler
+
+        ↓
+
+Compare results
+
+---------------------------------------------------------------------------
+
+Circuit optimization simplifies a quantum program to reduce total gate count, depth, and error, 
+whereas gate translation (or basis gate decomposition) rewrites abstract logic gates into the specific physical instruction set supported by a target hardware backend.
+
+----------------------------------
+------------------------------------------------------------------------------
+Links: 
+https://quantum.cloud.ibm.com/docs/en/guides/configure-qiskit-local 

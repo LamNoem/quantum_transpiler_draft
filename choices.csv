@@ -1,0 +1,13 @@
+Item,starting choice,explanation,improvements
+language,python,"more familiar, draft friendly",c++ for speed later
+framework,qiskit,"parser, internal circuit representation",
+input/output,OpenQasm,"input and output circuit; QASM (Quantum Assembly Language, such as OpenQASM) is used as a standard, hardware-independent intermediate language to describe and execute quantum circuits across different quantum computers and software tools.",
+Logical gate set,"H, X, RZ, CX, with numerical angles",,
+Initial circuit size,3,"keep simple ",expand to 5 or 6.
+Circuit behavior,Unitary circuits: initially no measurements /  resets / classical feedback or additional ancillas,,,
+Connectivity,A line: 0—1—2
+Initial target instructions,H X RZ CX with CX supported in both directions on neighbouring pairs
+QC-1 baseline,Inverse cancellation and adjacent RZ merging
+QC-2 baseline,Identity placement and shortest-path routing
+Physical cleanup,"The same two kinds of local simplification, restricted to legal output instructions"
+Execution,Local calculations and simulation; no quantum processor required
