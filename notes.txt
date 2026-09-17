@@ -214,5 +214,174 @@ whereas gate translation (or basis gate decomposition) rewrites abstract logic g
 
 ----------------------------------
 ------------------------------------------------------------------------------
+
+QuantumCircuit / OpenQASM input
+        ↓
+parse
+        ↓
+DAGCircuit
+        ↓
+normalization
+        ↓
+DAGCircuit whose operation nodes are mostly:
+H, X, RZ, CX
+        ↓
+QC-1 works directly on DAG
+        ↓
+QC-2 works on the DAG + mapping information
+        ↓
+translation
+        ↓
+DAGCircuit containing target-native gates
+        ↓
+physical cleanup
+        ↓
+QuantumCircuit output
+
+------------------------------------------------------
+
+The DAG tells you:
+
+which operations depend on which previous operations,
+which qubits each operation uses,
+which operations are independent,
+and therefore which transformations are safe.
+
+Qiskit specifically uses DAGCircuit because dependencies between operations are explicit, which makes compiler transformations easier than working with a simple list of gates.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+hen where does our {H, X, RZ, CX} choice fit?
+
+Inside the operation nodes.
+
+Before normalization, our DAG could look like:
+
+q0 ──► [ RX(θ) ] ──► [ CX ] ──►
+                         ▲
+q1 ──────────────────────┘
+
+If we decide our internal logical vocabulary is:
+
+$$ \{H,X,R_Z,CX\}, $$
+
+normalization could replace the RX node by:
+
+$$ R_X(\theta)=H R_Z(\theta) H. $$
+
+So the DAG becomes:
+
+q0 ─► [H] ─► [RZ(θ)] ─► [H] ─► [CX] ─►
+                                      ▲
+q1 ───────────────────────────────────┘
+
+It's still a DAG.
+
+We've only changed the kinds of operation nodes inside it.
+
+And Qiskit explicitly supports this kind of transformation: a compiler pass can replace one DAG node with an entire sub-DAG
+------------------------------------------------------------------------------------------------------------------------------------------
+
+The cleanest architecture for your project
+
+I would now describe your compiler architecture as having three different concepts, because separating them will prevent a lot of confusion later:
+
+Concept	                                        What it means	                                     Example
+IR / data structure	                How the circuit is represented	                             DAGCircuit
+Internal logical instruction set	  Operations QC-1/QC-2 initially understand	                 H, X, RZ, CX
+Physical target instruction set	  Operations the actual target permits after translation	        e.g. RZ, SX, X, ECR
+
+So the actual project looks like:
+
+INPUT
+QuantumCircuit / OpenQASM
+
+        │
+        ▼
+
+┌────────────────────────────┐
+│ Parse → DAGCircuit         │
+│                            │
+│ IR = DAG                   │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ NORMALIZATION              │
+│                            │
+│ Rewrite operation nodes    │
+│ into our logical set:      │
+│ H, X, RZ, CX               │
+│                            │
+│ Representation stays DAG   │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ QC-1                       │
+│ Logical optimization       │
+│                            │
+│ Works on DAG nodes         │
+│ • cancel H-H               │
+│ • cancel X-X               │
+│ • cancel CX-CX             │
+│ • merge RZ-RZ              │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ QC-2 PLACEMENT             │
+│                            │
+│ DAG                        │
+│ + target topology          │
+│ → logical→physical map     │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ QC-2 ROUTING               │
+│                            │
+│ Modify DAG                 │
+│ Insert abstract SWAP nodes │
+│ Update mapping             │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ NATIVE TRANSLATION         │
+│                            │
+│ Replace DAG nodes with     │
+│ target-supported sub-DAGs  │
+│                            │
+│ e.g. SWAP → CX CX CX       │
+│ or CX → H CZ H             │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+┌────────────────────────────┐
+│ PHYSICAL CLEANUP           │
+│                            │
+│ Optimize native-gate DAG   │
+│ while retaining mapping    │
+└──────────────┬─────────────┘
+               │
+               ▼
+
+        DAG → QuantumCircuit
+
+               │
+               ▼
+
+           OUTPUT
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 Links: 
 https://quantum.cloud.ibm.com/docs/en/guides/configure-qiskit-local 

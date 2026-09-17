@@ -1,2 +1,4 @@
 qiskit
 qiskit.visualization
+qiskit-qasm3-import
+pytest
