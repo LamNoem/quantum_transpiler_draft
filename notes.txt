@@ -385,3 +385,94 @@ QuantumCircuit / OpenQASM
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 Links: 
 https://quantum.cloud.ibm.com/docs/en/guides/configure-qiskit-local 
+
+--------------------------------------------------------------------------------------------------------
+
+               QISKIT
+                 │
+       ┌─────────┴──────────┐
+       │                    │
+ INFRASTRUCTURE          COMPILER
+       │                 ALGORITHMS
+       │                    │
+ QASM parser             optimization
+ QuantumCircuit          placement
+ DAGCircuit              routing
+ Operator                translation
+ Target                  etc.
+       │                    │
+       ✓                    ✗
+   WE USE THESE       WE REPLACE THE
+                      RELEVANT ONES
+                      WITH OUR OWN
+
+------------------------------------------------------------------------------------------------------------
+
+
+OpenQASM program ──►│  Program intake     │──► logical circuit
+                    └─────────────────────┘
+
+                    ┌─────────────────────┐
+Target file ───────►│  Target intake      │──► target/topology object
+                    └─────────────────────┘
+                              │
+                              │ stored, but mostly unused yet
+                              ▼
+
+logical circuit
+      │
+      ▼
+Normalization
+      │
+      ▼
+QC-1 logical optimization
+      │
+      ├─────────────────────────────┐
+      ▼                             │
+QC-2 placement ◄──────────────── target
+      │
+      ▼
+QC-2 routing   ◄──────────────── target
+      │
+      ▼
+Gate translation ◄────────────── target
+      │
+      ▼
+Physical cleanup ◄────────────── target
+
+accept topology as graph G = V,E
+
+Target
+├── number of physical qubits
+├── topology/connectivity
+├── allowed/native gates
+├── gate direction restrictions
+├── gate durations          [later]
+└── gate error rates        [later]
+
+--------------------
+high level inputs intake idea
+
+{
+  "name": "line_3",
+  "num_qubits": 3,
+
+  "connectivity": [
+    [0, 1],
+    [1, 2]
+  ],
+
+  "bidirectional": true,
+
+  "native_gates": [
+    "h",
+    "x",
+    "rz",
+    "cx"
+  ]
+}
+
+
+python transpile.py \
+    --circuit examples/test.qasm \
+    --target targets/line_3.json
