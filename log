@@ -1,0 +1,33 @@
+2026-09-21 21:54:10,034 - matplotlib.font_manager - WARNING - Matplotlib is building the font cache; this may take a moment.
+2026-09-21 21:54:10,854 - matplotlib.font_manager - INFO - generated new fontManager
+2026-09-21 21:54:23,754 - parser_0.input_qasm3 - ERROR - Initial load into qiskit failed: "The 'qiskit_qasm3_import' library is required to use 'loading from OpenQASM 3'. You can install it with 'pip install qiskit_qasm3_import'."
+2026-09-21 22:08:02,680 - parser_0.input_qasm3 - ERROR - Does not support classical feedback: control flow op.
+2026-09-21 22:08:28,496 - parser_0.input_qasm3 - ERROR - Does not support classical feedback: control flow op.
+2026-09-21 22:10:10,868 - __main__ - INFO - circuit loaded
+2026-09-21 22:11:31,178 - __main__ - INFO - Target loaded
+2026-09-21 22:14:30,105 - __main__ - INFO - circuit loaded
+2026-09-21 22:14:46,950 - __main__ - INFO - Target loaded
+2026-09-21 22:20:23,803 - __main__ - INFO - circuit loaded
+2026-09-21 22:20:41,682 - __main__ - INFO - Target loaded
+2026-09-21 22:25:45,191 - __main__ - INFO - circuit loaded
+2026-09-21 22:25:45,193 - __main__ - INFO - Target loaded
+2026-09-21 22:25:46,584 - __main__ - WARNING - Skipping optional DAG drawing: "The 'Graphviz' library is required to use 'dag_drawer'.  To install, follow the instructions at https://graphviz.org/download/. Qiskit needs the Graphviz binaries, which the 'graphviz' package on pip does not install. You must install the actual Graphviz software."
+2026-09-21 22:31:26,615 - __main__ - INFO - circuit loaded
+2026-09-21 22:31:26,617 - __main__ - INFO - Target loaded
+2026-09-21 22:32:15,474 - __main__ - INFO - circuit loaded
+2026-09-21 22:32:15,475 - __main__ - INFO - Target loaded
+2026-09-21 22:40:20,149 - __main__ - INFO - circuit loaded
+2026-09-21 22:40:20,169 - __main__ - INFO - Target loaded
+2026-09-21 23:21:27,127 - parser_0.input_qasm3 - ERROR - Unsupported circuit: mid-circuit measurement detected.
+2026-09-21 23:22:34,955 - parser_0.input_qasm3 - ERROR - Initial load into qiskit failed: "10,4: conditions must be 'bit == const bool' or 'bitarray == const int', not 'bit == const int'"
+2026-09-21 23:30:02,963 - parser_0.input_qasm3 - ERROR - Does not support classical feedback: control flow op.
+2026-09-21 23:36:37,371 - __main__ - INFO - circuit loaded
+2026-09-21 23:37:01,366 - __main__ - INFO - Target loaded
+2026-09-21 23:39:26,550 - __main__ - INFO - circuit loaded
+2026-09-21 23:39:40,880 - __main__ - INFO - Target loaded
+2026-09-21 23:40:23,853 - __main__ - INFO - circuit loaded
+2026-09-21 23:40:30,934 - __main__ - INFO - Target loaded
+2026-09-21 23:41:38,817 - __main__ - INFO - circuit loaded
+2026-09-21 23:41:38,819 - __main__ - INFO - Target loaded
+2026-09-21 23:43:17,239 - __main__ - INFO - circuit loaded
+2026-09-21 23:43:22,724 - __main__ - INFO - Target loaded

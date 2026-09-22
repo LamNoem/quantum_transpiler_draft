@@ -4,3 +4,8 @@ qiskit-qasm3-import
 pytest
 networkx
 matplotlib
+qiskit_qasm3_import
+pylatexenc
+graphviz
+# DAG drawing also needs the Graphviz binaries: https://graphviz.org/download/
+# Add Graphviz's bin directory to PATH, or unpack it to .venv/graphviz/bin.

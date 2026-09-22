@@ -1,0 +1,31 @@
+{
+    "optional name": "string_name",
+
+    "num_qubits": 3,
+
+    "phys_connect": [
+        [0, 1],
+        [1, 2]
+    ],
+
+
+    "instruct_connect": {
+        "h": "all",
+        "x": "all",
+        "rz": "all",
+
+        "cx": [
+        [0, 1],
+        [1, 0],
+        [1, 2],
+        [2, 1]
+        ]
+    },
+
+    "native_gates": [
+        "h",
+        "x",
+        "rz",
+        "cx"
+    ]
+}

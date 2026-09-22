@@ -1,9 +1,7 @@
-import qiskit.qasm3
 from general.log_config import logging
-from stage0.input_qasm3 import Stage0
-from  stage0.input_target import Target
-import networkx as nx
-import matplotlib.pyplot as plt
+from general.visualization import plot_parser_0
+from parser_0.parse_validate_qasm3 import parser_0
+from parser_0.input_target import Target
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 qasm_file = input("Path to qasm: ")
 
-raw_input_circuit = Stage0(qasm_file)
+raw_input_circuit = parser_0(qasm_file)
 
 logger.info("circuit loaded")
 
@@ -21,17 +19,11 @@ target_specs = Target(target_file)
 
 logger.info("Target loaded")
 
-# Or save a LaTeX rendering
-Stage0.circuit.draw(output="latex", filename="orig_circuit_latex.pdf")
+for meas_node in raw_input_circuit.final_measure_logical_qubits:
+    print(meas_node)
+    print(meas_node.qargs)
 
-nx.draw(target_specs.physical_graph)
-
-for gate_connectivity in target_specs.gate_connect_graphs.keys():
-    try:
-        nx.draw(target_specs.gate_connect_graphs[gate_connectivity])
-    except Exception:
-        print()
-
+plot_parser_0(raw_input_circuit, target_specs)
 
 ####### Stage 1 #####################
 

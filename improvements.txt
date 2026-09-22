@@ -1,0 +1,4 @@
+use qiskit to simplify surrounding structures.
+if finish this draft, capstone could be slowly removing qiskit (as parser and such):
+    - such as parser and helper functions
+    
