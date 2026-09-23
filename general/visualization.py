@@ -63,4 +63,18 @@ def plot_parser_0(raw_input_circuit, target_specs):
     dag_axes.set_title("Circuit DAG (final measurements removed)")
     dag_axes.set_axis_off()
 
-    plt.show()
+    # plt.show()
+
+def plot_norm_dag(norm_dag):
+    """Save and display the normalized circuit DAG."""
+    output_dir = Path(__file__).resolve().parent.parent / "visuals"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    dag_image = dag_drawer(norm_dag)
+    dag_image.save(output_dir / "normalized_circuit_dag.png")
+    dag_figure, dag_axes = plt.subplots(num="Normalized Circuit DAG", figsize=(8, 8), layout="constrained")
+    dag_axes.imshow(dag_image)
+    dag_axes.set_title("Normalized Circuit DAG")
+    dag_axes.set_axis_off()
+
+    # plt.show()
