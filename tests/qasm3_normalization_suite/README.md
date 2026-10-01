@@ -1,37 +1,16 @@
 # OpenQASM 3 normalization test suite
 
+I asked chatgpt to build a test suite for my normalizer
+
 201 individually named `.qasm` files. All are OpenQASM 3.0 programs except that
 20 intentionally contain syntax or semantic errors. The file extension is
 `.qasm`; the language version is declared in the source.
-
-Designed around your saved `Norm` class and its internal basis:
 
 ```python
 {"h", "x", "rz", "cx"}
 ```
 
-This is a diagnostic suite, not a claim that your compiler already supports
-all these inputs. Each file contains its purpose and intended outcome in
-comments. `TEST_INDEX.md` is the human-readable index; `manifest.json` is the
-machine-readable version.
 
-## What was and was not verified here
-
-The files and runner were created, Python syntax-checked, and audited for
-manifest/path consistency. The independent NumPy checks in `math_checks.py`
-were actually executed; their results are in `checks/math_check_results.json`.
-They reproduce the saved RY sequence and verify the phase/decomposition
-identities discussed below.
-
-**The QASM files and `run_suite.py` have NOT been executed through Qiskit here.**
-Qiskit is not installed in the creation environment, and installation was
-blocked by unavailable package-network access. Therefore, the expected results
-are test specifications, not reported passes on your local code or importer.
-`requirements.txt` is not a tested lockfile. Your Qiskit/importer versions can
-change which language features import successfully.
-
-No existing project files were changed. The source review refers to the saved
-`norm.py` shared earlier, not to any newer local revision.
 
 ## Fastest way to use the files
 
@@ -52,16 +31,7 @@ Point `--project-root` to the directory that also makes imports such as
 python run_suite.py --project-root "C:/path/to/quantum_compiler_draft" --normalizer compiler.norm:Norm
 ```
 
-Use your existing environment first. In a separate test environment where the
-dependencies are missing, install them with:
 
-```bash
-python -m pip install -r requirements.txt
-```
-
-Do not upgrade a working project environment merely to run these fixtures;
-first record and test its current versions. The runner records package versions
-in its output report.
 
 Run the complete core coverage, without optional probes and negative inputs:
 
@@ -239,27 +209,7 @@ Use `--only` with any of these IDs, or open the corresponding file under `cases/
 | 9 | `07_global_phase/controlled_two_pi_rotation` | Makes discarded rotation phase observable under control. |
 | 10 | `08_terminal_measurements/permuted_readout` | Tests restoration mapping when connected through your pipeline hook. |
 
-## Likely improvements from the saved norm.py
 
-These are observations about the previously shared source, not a claim that
-all remain in your newest local version. The complete explanation is in
-`KNOWN_ISSUES.md`.
-
-The saved `recursive_normalize` performs one pass over the original operation
-nodes and substitutes raw replacement DAGs. It does not recursively normalize
-those replacements. `norm_ry` exists but is not in `KNOWN_NORM`, and its saved
-sequence is not mathematically RY(theta). The explicit Z/S/SDG/T/TDG rules are
-correct only up to a global phase unless their missing phases are tracked.
-
-There is also a source-preservation concern: `orig_dag = dag` followed by
-in-place substitution leaves `orig_dag` pointing to the changed graph.
-The runner reports aliasing/in-place mutation but does not forbid an in-place
-API. Never compare a result against an "original" that is the same mutated DAG.
-
-Add clear errors for unsupported leaf gates, bounded recursion/no-progress
-protection, safe operation dispatch, and a final basis postcondition. Keep
-measurements/directives outside unitary gate decomposition. Do not require
-optimization or routing as part of making normalization correct.
 
 ## Additional tests that QASM files alone cannot express well
 
