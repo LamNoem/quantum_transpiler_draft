@@ -1,0 +1,2190 @@
+{
+  "schema_version": 1,
+  "language": "OpenQASM 3.0",
+  "basis": [
+    "h",
+    "x",
+    "rz",
+    "cx"
+  ],
+  "matrix_atol": 1e-09,
+  "matrix_rtol": 1e-09,
+  "max_matrix_qubits": 6,
+  "cases": [
+    {
+      "id": "00_basics/empty_one_qubit",
+      "file": "cases/00_basics/empty_one_qubit.qasm",
+      "kind": "normalize",
+      "purpose": "An empty circuit is the identity; an empty DAG must not crash.",
+      "tags": [
+        "empty"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "00_basics/empty_six_qubits",
+      "file": "cases/00_basics/empty_six_qubits.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve all six declared idle qubits.",
+      "tags": [
+        "empty",
+        "width"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "00_basics/h_only",
+      "file": "cases/00_basics/h_only.qasm",
+      "kind": "normalize",
+      "purpose": "An internal H must remain usable without a definition fallback.",
+      "tags": [],
+      "note": ""
+    },
+    {
+      "id": "00_basics/x_only",
+      "file": "cases/00_basics/x_only.qasm",
+      "kind": "normalize",
+      "purpose": "An internal X must remain usable without a definition fallback.",
+      "tags": [],
+      "note": ""
+    },
+    {
+      "id": "00_basics/rz_only",
+      "file": "cases/00_basics/rz_only.qasm",
+      "kind": "normalize",
+      "purpose": "A numerical internal RZ is already normalized.",
+      "tags": [],
+      "note": ""
+    },
+    {
+      "id": "00_basics/cx_only",
+      "file": "cases/00_basics/cx_only.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve control/target order for an internal CX.",
+      "tags": [],
+      "note": ""
+    },
+    {
+      "id": "00_basics/already_normalized_mixed",
+      "file": "cases/00_basics/already_normalized_mixed.qasm",
+      "kind": "normalize",
+      "purpose": "A complete pass should be a fixed point on an internal-basis circuit.",
+      "tags": [
+        "idempotence",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "00_basics/scalar_qubit",
+      "file": "cases/00_basics/scalar_qubit.qasm",
+      "kind": "normalize",
+      "purpose": "Scalar qubits are not qubit arrays of a presumed name.",
+      "tags": [
+        "width"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/y_only",
+      "file": "cases/01_single_qubit/y_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the y lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/z_only",
+      "file": "cases/01_single_qubit/z_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the z lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/s_only",
+      "file": "cases/01_single_qubit/s_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the s lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/sdg_only",
+      "file": "cases/01_single_qubit/sdg_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the sdg lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/t_only",
+      "file": "cases/01_single_qubit/t_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the t lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/tdg_only",
+      "file": "cases/01_single_qubit/tdg_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the tdg lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/sx_only",
+      "file": "cases/01_single_qubit/sx_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the sx lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/id_only",
+      "file": "cases/01_single_qubit/id_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate the id lowering, including its global phase.",
+      "tags": [
+        "single",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/rx_generic",
+      "file": "cases/01_single_qubit/rx_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate rx at a non-special angle; avoid accidental Clifford-only correctness.",
+      "tags": [
+        "single"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/ry_generic",
+      "file": "cases/01_single_qubit/ry_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate ry at a non-special angle; avoid accidental Clifford-only correctness.",
+      "tags": [
+        "single"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/p_generic",
+      "file": "cases/01_single_qubit/p_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate p at a non-special angle; avoid accidental Clifford-only correctness.",
+      "tags": [
+        "single"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/U_generic",
+      "file": "cases/01_single_qubit/U_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Built-in U is a key fallback endpoint: implement a terminating lowering rather than assuming definition exists.",
+      "tags": [
+        "single",
+        "fallback",
+        "u"
+      ],
+      "note": ""
+    },
+    {
+      "id": "01_single_qubit/U_zero",
+      "file": "cases/01_single_qubit/U_zero.qasm",
+      "kind": "normalize",
+      "purpose": "Built-in U with zero angles is the identity.",
+      "tags": [
+        "u",
+        "zero"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "02_angles/rx_zero",
+      "file": "cases/02_angles/rx_zero.qasm",
+      "kind": "normalize",
+      "purpose": "rx(0): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_pi",
+      "file": "cases/02_angles/rx_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_minus_pi",
+      "file": "cases/02_angles/rx_minus_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(-pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_half_pi",
+      "file": "cases/02_angles/rx_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_minus_half_pi",
+      "file": "cases/02_angles/rx_minus_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(-pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_two_pi",
+      "file": "cases/02_angles/rx_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(2*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": "Use exact operator comparison as well as equivalence up to global phase. 2*pi is not an exact identity for spin rotations."
+    },
+    {
+      "id": "02_angles/rx_four_pi",
+      "file": "cases/02_angles/rx_four_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(4*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_generic_pi",
+      "file": "cases/02_angles/rx_generic_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rx(pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_negative_large",
+      "file": "cases/02_angles/rx_negative_large.qasm",
+      "kind": "normalize",
+      "purpose": "rx(-13*pi/9): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_tiny_nonzero",
+      "file": "cases/02_angles/rx_tiny_nonzero.qasm",
+      "kind": "normalize",
+      "purpose": "rx(1e-6): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_generic_decimal",
+      "file": "cases/02_angles/rx_generic_decimal.qasm",
+      "kind": "normalize",
+      "purpose": "rx(0.731): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_large_angle",
+      "file": "cases/02_angles/rx_large_angle.qasm",
+      "kind": "normalize",
+      "purpose": "rx(23*pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_zero",
+      "file": "cases/02_angles/ry_zero.qasm",
+      "kind": "normalize",
+      "purpose": "ry(0): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_pi",
+      "file": "cases/02_angles/ry_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_minus_pi",
+      "file": "cases/02_angles/ry_minus_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(-pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_half_pi",
+      "file": "cases/02_angles/ry_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_minus_half_pi",
+      "file": "cases/02_angles/ry_minus_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(-pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_two_pi",
+      "file": "cases/02_angles/ry_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(2*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": "Use exact operator comparison as well as equivalence up to global phase. 2*pi is not an exact identity for spin rotations."
+    },
+    {
+      "id": "02_angles/ry_four_pi",
+      "file": "cases/02_angles/ry_four_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(4*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_generic_pi",
+      "file": "cases/02_angles/ry_generic_pi.qasm",
+      "kind": "normalize",
+      "purpose": "ry(pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_negative_large",
+      "file": "cases/02_angles/ry_negative_large.qasm",
+      "kind": "normalize",
+      "purpose": "ry(-13*pi/9): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_tiny_nonzero",
+      "file": "cases/02_angles/ry_tiny_nonzero.qasm",
+      "kind": "normalize",
+      "purpose": "ry(1e-6): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_generic_decimal",
+      "file": "cases/02_angles/ry_generic_decimal.qasm",
+      "kind": "normalize",
+      "purpose": "ry(0.731): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_large_angle",
+      "file": "cases/02_angles/ry_large_angle.qasm",
+      "kind": "normalize",
+      "purpose": "ry(23*pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_zero",
+      "file": "cases/02_angles/rz_zero.qasm",
+      "kind": "normalize",
+      "purpose": "rz(0): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_pi",
+      "file": "cases/02_angles/rz_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_minus_pi",
+      "file": "cases/02_angles/rz_minus_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(-pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_half_pi",
+      "file": "cases/02_angles/rz_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_minus_half_pi",
+      "file": "cases/02_angles/rz_minus_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(-pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_two_pi",
+      "file": "cases/02_angles/rz_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(2*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": "Use exact operator comparison as well as equivalence up to global phase. 2*pi is not an exact identity for spin rotations."
+    },
+    {
+      "id": "02_angles/rz_four_pi",
+      "file": "cases/02_angles/rz_four_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(4*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_generic_pi",
+      "file": "cases/02_angles/rz_generic_pi.qasm",
+      "kind": "normalize",
+      "purpose": "rz(pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_negative_large",
+      "file": "cases/02_angles/rz_negative_large.qasm",
+      "kind": "normalize",
+      "purpose": "rz(-13*pi/9): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_tiny_nonzero",
+      "file": "cases/02_angles/rz_tiny_nonzero.qasm",
+      "kind": "normalize",
+      "purpose": "rz(1e-6): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_generic_decimal",
+      "file": "cases/02_angles/rz_generic_decimal.qasm",
+      "kind": "normalize",
+      "purpose": "rz(0.731): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_large_angle",
+      "file": "cases/02_angles/rz_large_angle.qasm",
+      "kind": "normalize",
+      "purpose": "rz(23*pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_zero",
+      "file": "cases/02_angles/p_zero.qasm",
+      "kind": "normalize",
+      "purpose": "p(0): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_pi",
+      "file": "cases/02_angles/p_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_minus_pi",
+      "file": "cases/02_angles/p_minus_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(-pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_half_pi",
+      "file": "cases/02_angles/p_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_minus_half_pi",
+      "file": "cases/02_angles/p_minus_half_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(-pi/2): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_two_pi",
+      "file": "cases/02_angles/p_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(2*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_four_pi",
+      "file": "cases/02_angles/p_four_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(4*pi): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_generic_pi",
+      "file": "cases/02_angles/p_generic_pi.qasm",
+      "kind": "normalize",
+      "purpose": "p(pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_negative_large",
+      "file": "cases/02_angles/p_negative_large.qasm",
+      "kind": "normalize",
+      "purpose": "p(-13*pi/9): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_tiny_nonzero",
+      "file": "cases/02_angles/p_tiny_nonzero.qasm",
+      "kind": "normalize",
+      "purpose": "p(1e-6): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_generic_decimal",
+      "file": "cases/02_angles/p_generic_decimal.qasm",
+      "kind": "normalize",
+      "purpose": "p(0.731): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/p_large_angle",
+      "file": "cases/02_angles/p_large_angle.qasm",
+      "kind": "normalize",
+      "purpose": "p(23*pi/7): isolate sign, angle, zero/periodicity and phase mistakes.",
+      "tags": [
+        "angle",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rx_near_two_pi",
+      "file": "cases/02_angles/rx_near_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "Do not round a small nonzero residual in rx away.",
+      "tags": [
+        "angle",
+        "tolerance"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/ry_near_two_pi",
+      "file": "cases/02_angles/ry_near_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "Do not round a small nonzero residual in ry away.",
+      "tags": [
+        "angle",
+        "tolerance"
+      ],
+      "note": ""
+    },
+    {
+      "id": "02_angles/rz_near_two_pi",
+      "file": "cases/02_angles/rz_near_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "Do not round a small nonzero residual in rz away.",
+      "tags": [
+        "angle",
+        "tolerance"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/rx_input",
+      "file": "cases/03_symbolic/rx_input.qasm",
+      "kind": "normalize",
+      "purpose": "Normalize rx before binding theta; no float(theta) conversion.",
+      "tags": [
+        "symbolic",
+        "rx"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/ry_input",
+      "file": "cases/03_symbolic/ry_input.qasm",
+      "kind": "normalize",
+      "purpose": "Normalize ry before binding theta; no float(theta) conversion.",
+      "tags": [
+        "symbolic",
+        "ry"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/rz_input",
+      "file": "cases/03_symbolic/rz_input.qasm",
+      "kind": "normalize",
+      "purpose": "Normalize rz before binding theta; no float(theta) conversion.",
+      "tags": [
+        "symbolic",
+        "rz"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/p_input",
+      "file": "cases/03_symbolic/p_input.qasm",
+      "kind": "normalize",
+      "purpose": "Normalize p before binding theta; no float(theta) conversion.",
+      "tags": [
+        "symbolic",
+        "p"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/affine_expressions",
+      "file": "cases/03_symbolic/affine_expressions.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve multiple parameter expressions and signs through substitutions.",
+      "tags": [
+        "symbolic",
+        "expression"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/nonalphabetical_parameters",
+      "file": "cases/03_symbolic/nonalphabetical_parameters.qasm",
+      "kind": "normalize",
+      "purpose": "Never bind by guessed lexical or declaration order; bind Parameter objects.",
+      "tags": [
+        "symbolic",
+        "binding"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/U_three_parameters",
+      "file": "cases/03_symbolic/U_three_parameters.qasm",
+      "kind": "normalize",
+      "purpose": "An explicit U lowering must keep all three symbolic parameters in the correct order.",
+      "tags": [
+        "symbolic",
+        "u"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/controlled_parameters",
+      "file": "cases/03_symbolic/controlled_parameters.qasm",
+      "kind": "normalize",
+      "purpose": "Parameter expressions must survive multi-qubit decompositions.",
+      "tags": [
+        "symbolic",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/repeated_custom_parameter",
+      "file": "cases/03_symbolic/repeated_custom_parameter.qasm",
+      "kind": "normalize",
+      "purpose": "Repeated instantiations must not mutate or reuse the first replacement with stale parameters.",
+      "tags": [
+        "symbolic",
+        "cache",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "03_symbolic/parameter_cancellation",
+      "file": "cases/03_symbolic/parameter_cancellation.qasm",
+      "kind": "normalize",
+      "purpose": "A cancelled parameter may disappear; do not demand parameter-set equality after valid optimization.",
+      "tags": [
+        "symbolic",
+        "optimization"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "03_symbolic/parameter_only_phase",
+      "file": "cases/03_symbolic/parameter_only_phase.qasm",
+      "kind": "feature_probe",
+      "purpose": "Parameter tracking includes circuit global_phase, not just gate parameters.",
+      "tags": [
+        "symbolic",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cy_only",
+      "file": "cases/04_two_three_qubit/cy_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate cy; recursive replacement must terminate in the internal basis.",
+      "tags": [
+        "two_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cz_only",
+      "file": "cases/04_two_three_qubit/cz_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate cz; recursive replacement must terminate in the internal basis.",
+      "tags": [
+        "two_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/ch_only",
+      "file": "cases/04_two_three_qubit/ch_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate ch; recursive replacement must terminate in the internal basis.",
+      "tags": [
+        "two_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/swap_only",
+      "file": "cases/04_two_three_qubit/swap_only.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate swap; recursive replacement must terminate in the internal basis.",
+      "tags": [
+        "two_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cp_generic",
+      "file": "cases/04_two_three_qubit/cp_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate cp; controlled phase and controlled rotation are different operations.",
+      "tags": [
+        "two_qubit",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/crx_generic",
+      "file": "cases/04_two_three_qubit/crx_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate crx; controlled phase and controlled rotation are different operations.",
+      "tags": [
+        "two_qubit",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cry_generic",
+      "file": "cases/04_two_three_qubit/cry_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate cry; controlled phase and controlled rotation are different operations.",
+      "tags": [
+        "two_qubit",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/crz_generic",
+      "file": "cases/04_two_three_qubit/crz_generic.qasm",
+      "kind": "normalize",
+      "purpose": "Isolate crz; controlled phase and controlled rotation are different operations.",
+      "tags": [
+        "two_qubit",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cu_four_angles",
+      "file": "cases/04_two_three_qubit/cu_four_angles.qasm",
+      "kind": "normalize",
+      "purpose": "The fourth cu angle is a control-relative phase; do not omit it.",
+      "tags": [
+        "controlled",
+        "phase",
+        "u"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/ccx_only",
+      "file": "cases/04_two_three_qubit/ccx_only.qasm",
+      "kind": "normalize",
+      "purpose": "Toffoli exposes multi-level decomposition and T/TDG handling.",
+      "tags": [
+        "three_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/cswap_only",
+      "file": "cases/04_two_three_qubit/cswap_only.qasm",
+      "kind": "normalize",
+      "purpose": "Fredkin exposes nested three-qubit gate decompositions.",
+      "tags": [
+        "three_qubit",
+        "fallback"
+      ],
+      "note": ""
+    },
+    {
+      "id": "04_two_three_qubit/asymmetric_sequence",
+      "file": "cases/04_two_three_qubit/asymmetric_sequence.qasm",
+      "kind": "normalize",
+      "purpose": "Use non-symmetric states and controls so reversed wires cannot accidentally pass.",
+      "tags": [
+        "mapping",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/one_level",
+      "file": "cases/05_custom_recursive/one_level.qasm",
+      "kind": "normalize",
+      "purpose": "Replace a custom node with a body containing a non-internal RX.",
+      "tags": [
+        "recursion"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/three_levels",
+      "file": "cases/05_custom_recursive/three_levels.qasm",
+      "kind": "normalize",
+      "purpose": "A single sweep leaves middle/inner/custom or non-basis gates behind.",
+      "tags": [
+        "recursion",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/empty_definition",
+      "file": "cases/05_custom_recursive/empty_definition.qasm",
+      "kind": "normalize",
+      "purpose": "An empty gate definition means identity, not unsupported; erase the node without erasing wires.",
+      "tags": [
+        "empty",
+        "recursion"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "05_custom_recursive/multiple_instances",
+      "file": "cases/05_custom_recursive/multiple_instances.qasm",
+      "kind": "normalize",
+      "purpose": "Cached replacement DAGs must not retain parameters from another invocation.",
+      "tags": [
+        "cache",
+        "symbolic"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/unused_formal_wire",
+      "file": "cases/05_custom_recursive/unused_formal_wire.qasm",
+      "kind": "normalize",
+      "purpose": "The first formal wire is unused but must remain in the substitution interface.",
+      "tags": [
+        "width",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/rzz_defined",
+      "file": "cases/05_custom_recursive/rzz_defined.qasm",
+      "kind": "normalize",
+      "purpose": "RZZ is explicitly defined here; do not assume it is supplied by stdgates.inc.",
+      "tags": [
+        "custom",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/rxx_defined",
+      "file": "cases/05_custom_recursive/rxx_defined.qasm",
+      "kind": "normalize",
+      "purpose": "Nested custom XX interaction with only a final internal-basis result.",
+      "tags": [
+        "custom",
+        "recursion"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/ryy_defined",
+      "file": "cases/05_custom_recursive/ryy_defined.qasm",
+      "kind": "normalize",
+      "purpose": "YY interaction exercises S/SDG and nested custom definitions.",
+      "tags": [
+        "custom",
+        "recursion",
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/depth_twenty",
+      "file": "cases/05_custom_recursive/depth_twenty.qasm",
+      "kind": "normalize",
+      "purpose": "A linear 20-level definition chain should terminate; detect depth limits without exponential expansion.",
+      "tags": [
+        "recursion",
+        "depth"
+      ],
+      "note": ""
+    },
+    {
+      "id": "05_custom_recursive/two_custom_names",
+      "file": "cases/05_custom_recursive/two_custom_names.qasm",
+      "kind": "normalize",
+      "purpose": "Different definitions with identical arity/parameters must not share a wrong cache entry.",
+      "tags": [
+        "cache"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/highest_wire",
+      "file": "cases/06_wire_mapping/highest_wire.qasm",
+      "kind": "normalize",
+      "purpose": "One-qubit replacement must act on the original q[5], not local sub-DAG wire 0.",
+      "tags": [
+        "mapping",
+        "width"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/reversed_cx",
+      "file": "cases/06_wire_mapping/reversed_cx.qasm",
+      "kind": "normalize",
+      "purpose": "The control is q[2] and target is q[0]; never sort the qargs.",
+      "tags": [
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/nonadjacent_controlled",
+      "file": "cases/06_wire_mapping/nonadjacent_controlled.qasm",
+      "kind": "normalize",
+      "purpose": "Nonadjacent operands are valid at logical normalization; this is not a routing test.",
+      "tags": [
+        "mapping",
+        "topology"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/permuted_custom",
+      "file": "cases/06_wire_mapping/permuted_custom.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve the ordered formal-to-actual mapping of a three-wire custom gate.",
+      "tags": [
+        "mapping",
+        "recursion"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/multiple_registers",
+      "file": "cases/06_wire_mapping/multiple_registers.qasm",
+      "kind": "normalize",
+      "purpose": "Different registers may both contain local index zero.",
+      "tags": [
+        "mapping",
+        "registers"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/scalar_and_array",
+      "file": "cases/06_wire_mapping/scalar_and_array.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve a scalar ancilla and a separate array register.",
+      "tags": [
+        "mapping",
+        "registers"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/different_invocation_order",
+      "file": "cases/06_wire_mapping/different_invocation_order.qasm",
+      "kind": "normalize",
+      "purpose": "Reusing a custom rule must not reuse physical wire mappings.",
+      "tags": [
+        "cache",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "06_wire_mapping/idle_classical_register",
+      "file": "cases/06_wire_mapping/idle_classical_register.qasm",
+      "kind": "normalize",
+      "purpose": "Unused classical bits should not be mistaken for qubits or lost by a DAG-only pass.",
+      "tags": [
+        "width",
+        "classical"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/z_vs_rz",
+      "file": "cases/07_global_phase/z_vs_rz.qasm",
+      "kind": "normalize",
+      "purpose": "Z = exp(i*pi/2) RZ(pi). A missing phase is invisible to Operator.equiv.",
+      "tags": [
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/s_vs_rz",
+      "file": "cases/07_global_phase/s_vs_rz.qasm",
+      "kind": "normalize",
+      "purpose": "S = exp(i*pi/4) RZ(pi/2). Preserve or explicitly report the phase.",
+      "tags": [
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/tdg_vs_rz",
+      "file": "cases/07_global_phase/tdg_vs_rz.qasm",
+      "kind": "normalize",
+      "purpose": "TDG requires a negative global-phase correction in an exact RZ lowering.",
+      "tags": [
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/phase_accumulation",
+      "file": "cases/07_global_phase/phase_accumulation.qasm",
+      "kind": "normalize",
+      "purpose": "Accumulate all replacement phases rather than overwriting or dropping them.",
+      "tags": [
+        "phase",
+        "accumulation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/rotation_two_pi",
+      "file": "cases/07_global_phase/rotation_two_pi.qasm",
+      "kind": "normalize",
+      "purpose": "RX(2*pi) = -I, not exactly I; modulo-2*pi angle wrapping loses a phase.",
+      "tags": [
+        "phase",
+        "periodicity"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/rotation_four_pi",
+      "file": "cases/07_global_phase/rotation_four_pi.qasm",
+      "kind": "normalize",
+      "purpose": "RY(4*pi) is exactly I within numerical precision.",
+      "tags": [
+        "phase",
+        "periodicity"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "07_global_phase/explicit_gphase",
+      "file": "cases/07_global_phase/explicit_gphase.qasm",
+      "kind": "feature_probe",
+      "purpose": "Preserve an incoming circuit global phase through DAG conversion and substitution.",
+      "tags": [
+        "phase"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/custom_internal_gphase",
+      "file": "cases/07_global_phase/custom_internal_gphase.qasm",
+      "kind": "feature_probe",
+      "purpose": "Global phase stored inside a gate definition must be added during substitution.",
+      "tags": [
+        "phase",
+        "recursion"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/controlled_z_relative_phase",
+      "file": "cases/07_global_phase/controlled_z_relative_phase.qasm",
+      "kind": "feature_probe",
+      "purpose": "Under control, a formerly global phase becomes relative. Replacing controlled-Z by controlled-RZ(pi) is wrong.",
+      "tags": [
+        "phase",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/cp_not_crz",
+      "file": "cases/07_global_phase/cp_not_crz.qasm",
+      "kind": "normalize",
+      "purpose": "CP and CRZ must not share a naive lowering that discards the base-gate phase.",
+      "tags": [
+        "phase",
+        "controlled"
+      ],
+      "note": ""
+    },
+    {
+      "id": "07_global_phase/controlled_two_pi_rotation",
+      "file": "cases/07_global_phase/controlled_two_pi_rotation.qasm",
+      "kind": "normalize",
+      "purpose": "A controlled 2*pi rotation is not the identity; the control acquires a relative minus sign.",
+      "tags": [
+        "phase",
+        "controlled",
+        "periodicity"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/bell_register_readout",
+      "file": "cases/08_terminal_measurements/bell_register_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Strip terminal measurements before Norm and restore the original q-to-c mapping afterward.",
+      "tags": [
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/single_partial_readout",
+      "file": "cases/08_terminal_measurements/single_partial_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Not all qubits need to be measured, and the measured qubit is not necessarily q[0].",
+      "tags": [
+        "measurement",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/permuted_readout",
+      "file": "cases/08_terminal_measurements/permuted_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Keep ordered qubit/classical-bit associations instead of rebuilding c[i]=measure q[i].",
+      "tags": [
+        "measurement",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/cross_register_readout",
+      "file": "cases/08_terminal_measurements/cross_register_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Preserve scalar and array classical destinations across multiple quantum registers.",
+      "tags": [
+        "measurement",
+        "registers"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/readout_only",
+      "file": "cases/08_terminal_measurements/readout_only.qasm",
+      "kind": "normalize",
+      "purpose": "A measurement-only program has an empty unitary body, not an invalid circuit.",
+      "tags": [
+        "measurement",
+        "empty"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/measurement_terminal_per_wire",
+      "file": "cases/08_terminal_measurements/measurement_terminal_per_wire.qasm",
+      "kind": "policy_probe",
+      "purpose": "The first measurement is terminal on its own qubit even though unrelated quantum work follows.",
+      "tags": [
+        "measurement",
+        "terminal_policy"
+      ],
+      "note": "DAG/per-wire terminality can accept this safely when no classical result is read; a stricter textual-suffix policy may reject deliberately."
+    },
+    {
+      "id": "08_terminal_measurements/symbolic_then_readout",
+      "file": "cases/08_terminal_measurements/symbolic_then_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Bind symbolic parameters only for equivalence checks, not before normalization.",
+      "tags": [
+        "measurement",
+        "symbolic"
+      ],
+      "note": ""
+    },
+    {
+      "id": "08_terminal_measurements/custom_then_readout",
+      "file": "cases/08_terminal_measurements/custom_then_readout.qasm",
+      "kind": "normalize",
+      "purpose": "Nested normalization plus partial permuted terminal readout.",
+      "tags": [
+        "measurement",
+        "recursion"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/barrier_between_gates",
+      "file": "cases/09_directive_policy/barrier_between_gates.qasm",
+      "kind": "feature_probe",
+      "purpose": "A barrier is not a unitary gate to decompose. Decide whether to preserve or strip it before Norm.",
+      "tags": [
+        "barrier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/barrier_before_measurements",
+      "file": "cases/09_directive_policy/barrier_before_measurements.qasm",
+      "kind": "feature_probe",
+      "purpose": "Keep barrier policy separate from terminal-measurement validation.",
+      "tags": [
+        "barrier",
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/barrier_after_measurements",
+      "file": "cases/09_directive_policy/barrier_after_measurements.qasm",
+      "kind": "policy_probe",
+      "purpose": "A trailing barrier is not quantum reuse; do not flag it as a gate after measurement.",
+      "tags": [
+        "barrier",
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/repeated_measurement",
+      "file": "cases/09_directive_policy/repeated_measurement.qasm",
+      "kind": "policy_probe",
+      "purpose": "Decide whether repeated final measurements of one qubit are supported or rejected.",
+      "tags": [
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/classical_destination_overwrite",
+      "file": "cases/09_directive_policy/classical_destination_overwrite.qasm",
+      "kind": "policy_probe",
+      "purpose": "Two final measurements write the same bit; last-write order is significant.",
+      "tags": [
+        "measurement",
+        "classical_order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/discarded_measurement",
+      "file": "cases/09_directive_policy/discarded_measurement.qasm",
+      "kind": "policy_probe",
+      "purpose": "A measurement with no classical destination is valid QASM; decide whether the compiler accepts it.",
+      "tags": [
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/delay",
+      "file": "cases/09_directive_policy/delay.qasm",
+      "kind": "policy_probe",
+      "purpose": "Timing information is outside unitary gate normalization; preserve elsewhere or reject explicitly.",
+      "tags": [
+        "timing"
+      ],
+      "note": ""
+    },
+    {
+      "id": "09_directive_policy/phase_only_zero_qubits",
+      "file": "cases/09_directive_policy/phase_only_zero_qubits.qasm",
+      "kind": "policy_probe",
+      "purpose": "Decide whether zero-qubit, pure-global-phase programs are inside the compiler input contract.",
+      "tags": [
+        "phase",
+        "width"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/inverse_s",
+      "file": "cases/10_language_features/inverse_s.qasm",
+      "kind": "feature_probe",
+      "purpose": "Inverse modifiers may import as sdg or a wrapped inverse operation.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/inverse_custom",
+      "file": "cases/10_language_features/inverse_custom.qasm",
+      "kind": "feature_probe",
+      "purpose": "Inverse of a sequence requires reversing order and inverting every constituent.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/ctrl_x",
+      "file": "cases/10_language_features/ctrl_x.qasm",
+      "kind": "feature_probe",
+      "purpose": "A control modifier prepends the control wire; it is not another parameter.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/ctrl_two_x",
+      "file": "cases/10_language_features/ctrl_two_x.qasm",
+      "kind": "feature_probe",
+      "purpose": "Multiple controls and permuted qargs.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/negative_control",
+      "file": "cases/10_language_features/negative_control.qasm",
+      "kind": "feature_probe",
+      "purpose": "Open controls must not be treated as ordinary positive controls.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/mixed_controls",
+      "file": "cases/10_language_features/mixed_controls.qasm",
+      "kind": "feature_probe",
+      "purpose": "Mixed-polarity controls expose name-only dispatch and ignored ctrl_state.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/controlled_inverse",
+      "file": "cases/10_language_features/controlled_inverse.qasm",
+      "kind": "feature_probe",
+      "purpose": "Combine controlled and inverse semantics without losing phases.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/integer_power",
+      "file": "cases/10_language_features/integer_power.qasm",
+      "kind": "feature_probe",
+      "purpose": "Integer powers require complete lowering, not leaving a wrapper gate.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/fractional_power",
+      "file": "cases/10_language_features/fractional_power.qasm",
+      "kind": "feature_probe",
+      "purpose": "A valid fractional-power feature may require synthesis not currently implemented.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/controlled_gphase",
+      "file": "cases/10_language_features/controlled_gphase.qasm",
+      "kind": "feature_probe",
+      "purpose": "Controlled global phase is a one-qubit phase operation, not ignorable metadata.",
+      "tags": [
+        "modifier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/broadcast_one_qubit",
+      "file": "cases/10_language_features/broadcast_one_qubit.qasm",
+      "kind": "feature_probe",
+      "purpose": "Broadcast a one-qubit operation to every member of a register.",
+      "tags": [
+        "broadcast"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/broadcast_two_registers",
+      "file": "cases/10_language_features/broadcast_two_registers.qasm",
+      "kind": "feature_probe",
+      "purpose": "Pairwise broadcasting over same-sized registers, not all-to-all connectivity.",
+      "tags": [
+        "broadcast",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/alias_slice",
+      "file": "cases/10_language_features/alias_slice.qasm",
+      "kind": "feature_probe",
+      "purpose": "Aliases must refer to existing qubits; do not allocate new wires.",
+      "tags": [
+        "alias",
+        "mapping"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/input_angle",
+      "file": "cases/10_language_features/input_angle.qasm",
+      "kind": "feature_probe",
+      "purpose": "Probe input angle[64] support separately from input float[64].",
+      "tags": [
+        "symbolic",
+        "importer"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/constant_expression",
+      "file": "cases/10_language_features/constant_expression.qasm",
+      "kind": "feature_probe",
+      "purpose": "A compile-time const declaration may be an importer limitation, not a Norm defect.",
+      "tags": [
+        "expression",
+        "importer"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/symbolic_product",
+      "file": "cases/10_language_features/symbolic_product.qasm",
+      "kind": "feature_probe",
+      "purpose": "Probe non-affine symbolic expression support.",
+      "tags": [
+        "symbolic",
+        "expression"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/static_for",
+      "file": "cases/10_language_features/static_for.qasm",
+      "kind": "policy_probe",
+      "purpose": "A static loop is valid, but should be unrolled in a frontend before a flat DAG normalizer.",
+      "tags": [
+        "loop",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/custom_gate_named_h",
+      "file": "cases/10_language_features/custom_gate_named_h.qasm",
+      "kind": "feature_probe",
+      "purpose": "Do not mark a generic custom gate as normalized solely because its name is h.",
+      "tags": [
+        "name_collision",
+        "semantic_gate_identity"
+      ],
+      "note": ""
+    },
+    {
+      "id": "10_language_features/custom_gate_named_rx",
+      "file": "cases/10_language_features/custom_gate_named_rx.qasm",
+      "kind": "feature_probe",
+      "purpose": "A user-defined rx name need not mean Qiskit RXGate. Dispatch must inspect the operation type/definition.",
+      "tags": [
+        "name_collision",
+        "semantic_gate_identity"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/measure_then_h",
+      "file": "cases/11_reject_policy/measure_then_h.qasm",
+      "kind": "reject_policy",
+      "purpose": "A measured qubit is reused by a quantum gate.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/measured_qubit_as_control",
+      "file": "cases/11_reject_policy/measured_qubit_as_control.qasm",
+      "kind": "reject_policy",
+      "purpose": "Measurement followed by using that qubit as a CX control is not terminal.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/measured_qubit_as_target",
+      "file": "cases/11_reject_policy/measured_qubit_as_target.qasm",
+      "kind": "reject_policy",
+      "purpose": "Measurement followed by using that qubit as a CX target is not terminal.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/measure_then_custom",
+      "file": "cases/11_reject_policy/measure_then_custom.qasm",
+      "kind": "reject_policy",
+      "purpose": "A gate hidden inside a custom definition still reuses a measured qubit.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/reset_first",
+      "file": "cases/11_reject_policy/reset_first.qasm",
+      "kind": "reject_policy",
+      "purpose": "Reset is outside the chosen unitary-only computation model, even at the beginning.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/reset_after_entanglement",
+      "file": "cases/11_reject_policy/reset_after_entanglement.qasm",
+      "kind": "reject_policy",
+      "purpose": "Dropping reset changes the computation.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/measurement_feedforward",
+      "file": "cases/11_reject_policy/measurement_feedforward.qasm",
+      "kind": "reject_policy",
+      "purpose": "Classical feed-forward remains unsupported even if the measured qubit is never reused.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/if_else",
+      "file": "cases/11_reject_policy/if_else.qasm",
+      "kind": "reject_policy",
+      "purpose": "Reject control-flow nodes rather than silently normalizing only one branch.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "11_reject_policy/while_measurement",
+      "file": "cases/11_reject_policy/while_measurement.qasm",
+      "kind": "reject_policy",
+      "purpose": "Dynamic loops are not a flat unitary circuit.",
+      "tags": [
+        "validation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/missing_semicolon",
+      "file": "cases/12_invalid_qasm/missing_semicolon.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Syntax error: missing operation semicolon.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/unknown_gate",
+      "file": "cases/12_invalid_qasm/unknown_gate.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: undefined gate.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/undeclared_angle",
+      "file": "cases/12_invalid_qasm/undeclared_angle.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: undeclared parameter theta.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/unknown_qubit",
+      "file": "cases/12_invalid_qasm/unknown_qubit.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: undeclared qubit.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/qubit_out_of_range",
+      "file": "cases/12_invalid_qasm/qubit_out_of_range.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: out-of-range array index.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/classical_out_of_range",
+      "file": "cases/12_invalid_qasm/classical_out_of_range.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: classical destination out of range.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/duplicate_cx_operand",
+      "file": "cases/12_invalid_qasm/duplicate_cx_operand.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: a controlled two-qubit gate cannot use the same qubit twice.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/duplicate_ccx_operand",
+      "file": "cases/12_invalid_qasm/duplicate_ccx_operand.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Semantic error: repeated qubit in one three-qubit operation.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/too_few_qubits",
+      "file": "cases/12_invalid_qasm/too_few_qubits.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Wrong gate arity: CX requires two qubit operands.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/too_many_qubits",
+      "file": "cases/12_invalid_qasm/too_many_qubits.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Wrong gate arity: H has one operand; comma-separated operands are not broadcasting.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/missing_angle",
+      "file": "cases/12_invalid_qasm/missing_angle.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Wrong parameter arity: RX needs an angle.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/extra_angle",
+      "file": "cases/12_invalid_qasm/extra_angle.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Wrong parameter arity: RY has one angle.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/classical_as_qubit",
+      "file": "cases/12_invalid_qasm/classical_as_qubit.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Type error: a classical bit is not a gate operand.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/mismatched_broadcast",
+      "file": "cases/12_invalid_qasm/mismatched_broadcast.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Broadcast arrays must have equal lengths.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/mismatched_measurement",
+      "file": "cases/12_invalid_qasm/mismatched_measurement.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Measurement source/destination lengths differ.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/duplicate_declaration",
+      "file": "cases/12_invalid_qasm/duplicate_declaration.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Duplicate declaration in one scope.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/self_recursive_gate",
+      "file": "cases/12_invalid_qasm/self_recursive_gate.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Recursive gate definitions are not legal OpenQASM; reject before Norm recursion.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/measurement_in_gate",
+      "file": "cases/12_invalid_qasm/measurement_in_gate.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "A gate definition cannot contain measurement.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/missing_std_include",
+      "file": "cases/12_invalid_qasm/missing_std_include.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "Without an include or definition, h is not a built-in; only U and gphase are built-in gates.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "12_invalid_qasm/nonstandard_rzz_undefined",
+      "file": "cases/12_invalid_qasm/nonstandard_rzz_undefined.qasm",
+      "kind": "invalid_qasm",
+      "purpose": "RZZ is not automatically defined by the OpenQASM 3.0 standard library; provide a custom definition.",
+      "tags": [
+        "negative",
+        "frontend"
+      ],
+      "note": ""
+    },
+    {
+      "id": "13_stress/seed_17_five_qubits",
+      "file": "cases/13_stress/seed_17_five_qubits.qasm",
+      "kind": "normalize",
+      "purpose": "Deterministic mixed circuit, seed 17, 160 source operations. No cancellation-only construction.",
+      "tags": [
+        "stress",
+        "random"
+      ],
+      "note": "Full operator comparison is affordable at five qubits; these inputs are reproducible."
+    },
+    {
+      "id": "13_stress/seed_41_five_qubits",
+      "file": "cases/13_stress/seed_41_five_qubits.qasm",
+      "kind": "normalize",
+      "purpose": "Deterministic mixed circuit, seed 41, 160 source operations. No cancellation-only construction.",
+      "tags": [
+        "stress",
+        "random"
+      ],
+      "note": "Full operator comparison is affordable at five qubits; these inputs are reproducible."
+    },
+    {
+      "id": "13_stress/seed_103_five_qubits",
+      "file": "cases/13_stress/seed_103_five_qubits.qasm",
+      "kind": "normalize",
+      "purpose": "Deterministic mixed circuit, seed 103, 160 source operations. No cancellation-only construction.",
+      "tags": [
+        "stress",
+        "random"
+      ],
+      "note": "Full operator comparison is affordable at five qubits; these inputs are reproducible."
+    },
+    {
+      "id": "13_stress/seed_997_five_qubits",
+      "file": "cases/13_stress/seed_997_five_qubits.qasm",
+      "kind": "normalize",
+      "purpose": "Deterministic mixed circuit, seed 997, 160 source operations. No cancellation-only construction.",
+      "tags": [
+        "stress",
+        "random"
+      ],
+      "note": "Full operator comparison is affordable at five qubits; these inputs are reproducible."
+    },
+    {
+      "id": "13_stress/many_replacements",
+      "file": "cases/13_stress/many_replacements.qasm",
+      "kind": "normalize",
+      "purpose": "240 source operations exercise mutation while iterating and repeated lowering on six wires.",
+      "tags": [
+        "stress",
+        "iteration"
+      ],
+      "note": ""
+    },
+    {
+      "id": "13_stress/custom_reuse_120",
+      "file": "cases/13_stress/custom_reuse_120.qasm",
+      "kind": "normalize",
+      "purpose": "Repeated custom invocations expose shared replacement objects and stale cache state.",
+      "tags": [
+        "stress",
+        "cache"
+      ],
+      "note": ""
+    },
+    {
+      "id": "14_optimizer_traps/noncommuting_rotation_order",
+      "file": "cases/14_optimizer_traps/noncommuting_rotation_order.qasm",
+      "kind": "normalize",
+      "purpose": "Do not reverse operations while building a sub-DAG.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "14_optimizer_traps/h_separates_rz",
+      "file": "cases/14_optimizer_traps/h_separates_rz.qasm",
+      "kind": "normalize",
+      "purpose": "Never merge RZ rotations through a noncommuting H.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "14_optimizer_traps/cx_target_separates_rz",
+      "file": "cases/14_optimizer_traps/cx_target_separates_rz.qasm",
+      "kind": "normalize",
+      "purpose": "RZ on the CX target cannot generally be moved through CX.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "14_optimizer_traps/adjacent_inverse",
+      "file": "cases/14_optimizer_traps/adjacent_inverse.qasm",
+      "kind": "normalize",
+      "purpose": "Correctness requires identity behavior, not a minimal output gate count.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "14_optimizer_traps/two_x",
+      "file": "cases/14_optimizer_traps/two_x.qasm",
+      "kind": "normalize",
+      "purpose": "Two X gates may remain after normalization; cancellation is an optimization, not a normalization requirement.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": "",
+      "oracle": "identity"
+    },
+    {
+      "id": "14_optimizer_traps/cx_direction_changes",
+      "file": "cases/14_optimizer_traps/cx_direction_changes.qasm",
+      "kind": "normalize",
+      "purpose": "Opposite-direction CX gates do not cancel.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": ""
+    },
+    {
+      "id": "14_optimizer_traps/tiny_angle_aggregate",
+      "file": "cases/14_optimizer_traps/tiny_angle_aggregate.qasm",
+      "kind": "normalize",
+      "purpose": "Repeated small rotations must not all be dropped as zero.",
+      "tags": [
+        "optimization",
+        "order"
+      ],
+      "note": ""
+    }
+  ]
+}

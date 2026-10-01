@@ -72,7 +72,7 @@ class Target:
                 self.gate_connect_graphs[native_gate].add_edges_from(connectivity)
             else:
                 self.gate_connect_graphs[native_gate] = connectivity
-
+        logger.info("Target loaded as physical connections graph and instruction connection graph")
 
     
 

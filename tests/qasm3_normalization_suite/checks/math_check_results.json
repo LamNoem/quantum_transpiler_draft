@@ -1,0 +1,120 @@
+{
+  "scope": "Independent matrix checks of formulas transcribed from saved source; not QASM/Qiskit execution.",
+  "ry_tests": [
+    {
+      "theta": 0.0,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 1.2891523794779702e-17,
+      "corrected_sequence_max_error": 2.231687133607212e-16
+    },
+    {
+      "theta": 1e-06,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 3.535537441089727e-07,
+      "corrected_sequence_max_error": 1.1235649845259035e-16
+    },
+    {
+      "theta": 0.4,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.1840967020065128,
+      "corrected_sequence_max_error": 2.443650119202518e-16
+    },
+    {
+      "theta": 0.4487989505128276,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.21003380020601423,
+      "corrected_sequence_max_error": 2.445818409034346e-16
+    },
+    {
+      "theta": -1.0471975511965976,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.12940952255126015,
+      "corrected_sequence_max_error": 1.6877969935243713e-16
+    },
+    {
+      "theta": 1.5707963267948966,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.4999999999999999,
+      "corrected_sequence_max_error": 1.688977229290153e-16
+    },
+    {
+      "theta": 3.141592653589793,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.707106781186547,
+      "corrected_sequence_max_error": 3.9475860504785135e-16
+    },
+    {
+      "theta": 6.283185307179586,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 1.678128424868075e-16,
+      "corrected_sequence_max_error": 2.290300725377888e-16
+    },
+    {
+      "theta": 12.566370614359172,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 2.3534285311902095e-16,
+      "corrected_sequence_max_error": 2.290300725377888e-16
+    },
+    {
+      "theta": 10.322375861795035,
+      "saved_sequence_exact": false,
+      "saved_sequence_equivalent_up_to_phase": false,
+      "saved_sequence_normalized_trace_overlap": 0.8953037647683257,
+      "corrected_sequence_max_error": 1.671920042368403e-16
+    }
+  ],
+  "phase_tests": [
+    {
+      "gate": "z",
+      "rz_angle": 3.141592653589793,
+      "required_global_phase": 1.5707963267948966,
+      "without_phase_exact": false,
+      "without_phase_physical": true
+    },
+    {
+      "gate": "s",
+      "rz_angle": 1.5707963267948966,
+      "required_global_phase": 0.7853981633974483,
+      "without_phase_exact": false,
+      "without_phase_physical": true
+    },
+    {
+      "gate": "sdg",
+      "rz_angle": -1.5707963267948966,
+      "required_global_phase": -0.7853981633974483,
+      "without_phase_exact": false,
+      "without_phase_physical": true
+    },
+    {
+      "gate": "t",
+      "rz_angle": 0.7853981633974483,
+      "required_global_phase": 0.39269908169872414,
+      "without_phase_exact": false,
+      "without_phase_physical": true
+    },
+    {
+      "gate": "tdg",
+      "rz_angle": -0.7853981633974483,
+      "required_global_phase": -0.39269908169872414,
+      "without_phase_exact": false,
+      "without_phase_physical": true
+    }
+  ],
+  "additional_assertions": {
+    "rx_equals_h_rz_h": true,
+    "rz_2pi_is_minus_identity": true,
+    "rz_4pi_is_identity": true,
+    "cp_and_crz_are_not_equivalent_in_general": true,
+    "controlled_rx_2pi_is_not_identity": true
+  },
+  "assertions_passed": true
+}

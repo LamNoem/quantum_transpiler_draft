@@ -1,0 +1,10 @@
+// TEST: 02_angles/rx_generic_decimal
+// KIND: normalize
+// PURPOSE: rx(0.731): isolate sign, angle, zero/periodicity and phase mistakes.
+// EXPECTED: Normalize the unitary body to h, x, rz, cx; preserve its operator and wires.
+
+OPENQASM 3.0;
+include "stdgates.inc";
+
+qubit[1] q;
+rx(0.731) q[0];

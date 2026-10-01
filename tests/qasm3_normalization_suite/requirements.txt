@@ -1,0 +1,4 @@
+# Broad requirements, NOT a tested lockfile. Use an isolated environment.
+# Keep your project's existing Qiskit version when comparing regressions.
+qiskit[qasm3-import]>=1.2
+numpy>=1.24

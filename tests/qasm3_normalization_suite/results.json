@@ -1,0 +1,452 @@
+{
+  "mode": "unitary_body",
+  "versions": {
+    "qiskit": "2.5.2",
+    "qiskit-qasm3-import": "0.6.0",
+    "openqasm3": "1.0.1",
+    "numpy": "2.5.3"
+  },
+  "phase_mode": "exact",
+  "atol": 1e-09,
+  "rtol": 1e-09,
+  "normalizer": "normalization_1.norm:Norm",
+  "pipeline": null,
+  "validator": null,
+  "counts": {
+    "PASS": 13
+  },
+  "results": [
+    {
+      "id": "01_single_qubit/y_only",
+      "kind": "normalize",
+      "purpose": "Isolate the y lowering, including its global phase.",
+      "file": "cases/01_single_qubit/y_only.qasm",
+      "imported_operations": {
+        "y": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 5,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 2.220446049250313e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.033625
+    },
+    {
+      "id": "01_single_qubit/z_only",
+      "kind": "normalize",
+      "purpose": "Isolate the z lowering, including its global phase.",
+      "file": "cases/01_single_qubit/z_only.qasm",
+      "imported_operations": {
+        "z": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 1.2246467991473532e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.009337
+    },
+    {
+      "id": "01_single_qubit/s_only",
+      "kind": "normalize",
+      "purpose": "Isolate the s lowering, including its global phase.",
+      "file": "cases/01_single_qubit/s_only.qasm",
+      "imported_operations": {
+        "s": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 2.220446049250313e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.009098
+    },
+    {
+      "id": "01_single_qubit/sdg_only",
+      "kind": "normalize",
+      "purpose": "Isolate the sdg lowering, including its global phase.",
+      "file": "cases/01_single_qubit/sdg_only.qasm",
+      "imported_operations": {
+        "sdg": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 2.220446049250313e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.007318
+    },
+    {
+      "id": "01_single_qubit/t_only",
+      "kind": "normalize",
+      "purpose": "Isolate the t lowering, including its global phase.",
+      "file": "cases/01_single_qubit/t_only.qasm",
+      "imported_operations": {
+        "t": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 1.1102230246251565e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.008733
+    },
+    {
+      "id": "01_single_qubit/tdg_only",
+      "kind": "normalize",
+      "purpose": "Isolate the tdg lowering, including its global phase.",
+      "file": "cases/01_single_qubit/tdg_only.qasm",
+      "imported_operations": {
+        "tdg": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 7.108895957933346e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.007555
+    },
+    {
+      "id": "01_single_qubit/sx_only",
+      "kind": "normalize",
+      "purpose": "Isolate the sx lowering, including its global phase.",
+      "file": "cases/01_single_qubit/sx_only.qasm",
+      "imported_operations": {
+        "sx": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 2,
+        "h": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 8.005932084973443e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.007875
+    },
+    {
+      "id": "01_single_qubit/id_only",
+      "kind": "normalize",
+      "purpose": "Isolate the id lowering, including its global phase.",
+      "file": "cases/01_single_qubit/id_only.qasm",
+      "imported_operations": {
+        "u": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 5,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 0.0,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.007909
+    },
+    {
+      "id": "01_single_qubit/rx_generic",
+      "kind": "normalize",
+      "purpose": "Isolate rx at a non-special angle; avoid accidental Clifford-only correctness.",
+      "file": "cases/01_single_qubit/rx_generic.qasm",
+      "imported_operations": {
+        "rx": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "h": 2,
+        "rz": 1
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 1.1102230246251565e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.012782
+    },
+    {
+      "id": "01_single_qubit/ry_generic",
+      "kind": "normalize",
+      "purpose": "Isolate ry at a non-special angle; avoid accidental Clifford-only correctness.",
+      "file": "cases/01_single_qubit/ry_generic.qasm",
+      "imported_operations": {
+        "ry": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 3,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 1.1102230246251565e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.007497
+    },
+    {
+      "id": "01_single_qubit/p_generic",
+      "kind": "normalize",
+      "purpose": "Isolate p at a non-special angle; avoid accidental Clifford-only correctness.",
+      "file": "cases/01_single_qubit/p_generic.qasm",
+      "imported_operations": {
+        "p": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 5,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 2.220446049250313e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.008867
+    },
+    {
+      "id": "01_single_qubit/U_generic",
+      "kind": "normalize",
+      "purpose": "Built-in U is a key fallback endpoint: implement a terminating lowering rather than assuming definition exists.",
+      "file": "cases/01_single_qubit/U_generic.qasm",
+      "imported_operations": {
+        "u": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 5,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 1.5700924586837752e-16,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.01863
+    },
+    {
+      "id": "01_single_qubit/U_zero",
+      "kind": "normalize",
+      "purpose": "Built-in U with zero angles is the identity.",
+      "file": "cases/01_single_qubit/U_zero.qasm",
+      "imported_operations": {
+        "u": 1
+      },
+      "num_qubits": 1,
+      "num_clbits": 0,
+      "parameters": [],
+      "reference_measurement_map": [],
+      "barriers_in_input": 0,
+      "input_dag_mutated": true,
+      "orig_and_normalized_dag_alias": false,
+      "measurement_handling_scope": "scaffold_stripped; user restoration NOT tested",
+      "output_operations": {
+        "rz": 5,
+        "h": 2
+      },
+      "equivalence": {
+        "ok": true,
+        "reason": "EQUIVALENT",
+        "exact_equal": true,
+        "equivalent_up_to_global_phase": true,
+        "max_absolute_matrix_error": 0.0,
+        "bindings_checked": 1,
+        "first_failing_binding": null
+      },
+      "status": "PASS",
+      "detail": "Basis, wires, and operator agree at every tested binding.",
+      "seconds": 0.009201
+    }
+  ],
+  "limitations": [
+    "Symbolic equivalence is sampled, not proved for all parameter values.",
+    "Reference semantics are supplied by the selected Qiskit importer; the suite is not an independent certification of that importer.",
+    "No state-initialization-only or probability-only checks substitute for full operator checks.",
+    "No Qiskit transpile() or transpiler pass is called by this runner.",
+    "Barrier scheduling/fence preservation is not tested by unitary comparison.",
+    "Policy and importer blocks are distinct from normalizer failures."
+  ]
+}

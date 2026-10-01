@@ -1,0 +1,28 @@
+{
+  "scope": "Pure helper logic using minimal test doubles; NOT real Qiskit/API or QASM execution.",
+  "tests_passed": 22,
+  "checks": [
+    "identical_operators_pass",
+    "global_phase_classified_separately",
+    "physical_mode_permits_only_global_phase",
+    "physical_mode_rejects_different_operator",
+    "same_name_new_parameter_identity_rejected",
+    "cancelled_parameter_may_disappear",
+    "fourteen_symbolic_samples",
+    "independent_samples_reproducible",
+    "identity_oracle_checks_input",
+    "wide_circuit_not_falsely_passed",
+    "validator_false_rejects",
+    "validator_valueerror_rejects",
+    "validator_programming_error_not_credited",
+    "no_validator_does_not_pass_policy",
+    "user_policy_accept_is_failure",
+    "user_policy_reject_is_pass",
+    "invalid_source_accepted_is_failure",
+    "invalid_source_rejected_is_pass",
+    "valid_policy_case_import_failure_is_blocked",
+    "feature_import_failure_is_blocked",
+    "required_import_failure_is_failure",
+    "importer_crash_not_credited_as_rejection"
+  ]
+}

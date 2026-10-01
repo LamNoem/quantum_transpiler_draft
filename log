@@ -29,3 +29,335 @@
 2026-09-22 22:03:48,060 - __main__ - INFO - Target loaded
 2026-09-22 22:03:57,617 - __main__ - INFO - Stage 0 done
 2026-09-22 22:03:57,618 - __main__ - INFO - Stage 1: Normalization
+2026-09-30 21:50:09,987 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,014 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,015 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,019 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,021 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,022 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,032 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,036 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,036 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,041 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,042 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,043 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,061 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,063 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,064 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,072 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,073 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,074 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,085 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,088 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,089 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,094 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,096 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:50:10,096 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,475 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 21:51:45,478 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,485 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 21:51:45,485 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,491 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 21:51:45,491 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,497 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 21:51:45,497 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,504 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 21:51:45,504 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,511 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 21:51:45,511 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,519 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 21:51:45,520 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,526 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 21:51:45,537 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 21:51:45,537 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,539 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,539 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 21:51:45,539 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,545 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 21:51:45,545 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,547 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,548 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 21:51:45,548 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,554 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 21:51:45,554 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 21:51:45,572 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 21:51:45,577 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:06:55,648 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 22:06:55,650 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:06:55,657 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:06:55,657 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,675 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:06:55,676 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,682 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:06:55,683 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,689 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:06:55,689 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,695 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:06:55,696 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,705 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:06:55,706 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:06:55,706 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:06:55,707 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,720 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:06:55,732 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:06:55,733 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,734 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,735 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:06:55,735 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,740 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:06:55,741 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,743 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,743 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:06:55,743 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:06:55,749 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 22:06:55,749 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:06:55,767 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:06:55,773 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:29:37,832 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 22:29:37,833 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:29:37,838 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:29:37,838 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,840 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,841 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:29:37,841 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,846 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:29:37,847 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,848 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,849 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:29:37,849 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,854 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,854 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,856 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,856 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,856 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,862 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:29:37,863 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,864 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,865 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:29:37,865 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,871 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:29:37,871 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,873 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,874 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:29:37,874 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,878 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:29:37,879 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,879 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,879 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,881 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,881 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:29:37,882 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,882 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:29:37,882 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,887 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:29:37,896 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:29:37,896 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,898 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,899 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:29:37,899 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,904 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:29:37,904 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,906 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,907 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:29:37,907 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:29:37,912 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 22:29:37,913 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:29:37,927 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:29:37,932 - normalization_1.norm - ERROR - Does not support u, could not normalize.
+2026-09-30 22:47:28,195 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 22:47:28,197 - normalization_1.norm - INFO - Normalized U gate with theta=3.141592653589793, phi=1.5707963267948966, lambda=1.5707963267948966 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,198 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,213 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:47:28,213 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,219 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,219 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:47:28,219 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,223 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:47:28,224 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,225 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,226 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:47:28,226 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,231 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,232 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,233 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,234 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,234 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,239 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:47:28,239 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,241 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,241 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:47:28,242 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,249 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:47:28,249 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,252 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,254 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:47:28,254 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,258 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:47:28,258 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,258 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,259 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,260 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,261 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:47:28,261 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,261 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:47:28,261 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,266 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,266 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,268 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,269 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,269 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,279 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:47:28,279 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,281 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,282 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:47:28,282 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,286 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:47:28,287 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,289 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,289 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:47:28,290 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,295 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 22:47:28,295 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.731 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,295 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,312 - normalization_1.norm - INFO - Normalized U gate with theta=0.731, phi=-0.413, lambda=1.127 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,312 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,320 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,320 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,322 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:47:28,323 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:47:28,323 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,678 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 22:58:47,681 - normalization_1.norm - INFO - Normalized U gate with theta=3.141592653589793, phi=1.5707963267948966, lambda=1.5707963267948966 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,682 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,690 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:58:47,690 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,696 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,697 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 22:58:47,697 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,701 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:58:47,702 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,703 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,704 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 22:58:47,704 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,709 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,709 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,711 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,712 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,712 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,716 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:58:47,716 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,718 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,719 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 22:58:47,719 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,724 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:58:47,725 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,726 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,727 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 22:58:47,727 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,732 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:58:47,732 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,732 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,732 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,734 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,734 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 22:58:47,735 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,735 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 22:58:47,735 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,740 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,740 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,742 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,743 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,743 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,754 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:58:47,754 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,757 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,757 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 22:58:47,758 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,763 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:58:47,763 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,766 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,767 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 22:58:47,767 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,775 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 22:58:47,775 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.731 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,775 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,796 - normalization_1.norm - INFO - Normalized U gate with theta=0.731, phi=-0.413, lambda=1.127 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,796 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,804 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,804 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,806 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 22:58:47,807 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 22:58:47,807 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,864 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 23:05:55,865 - normalization_1.norm - INFO - Normalized U gate with theta=3.141592653589793, phi=1.5707963267948966, lambda=1.5707963267948966 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,865 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,869 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,870 - normalization_1.norm - INFO - Normalizing y using its definition.
+2026-09-30 23:05:55,870 - normalization_1.norm - INFO - Normalized U gate with theta=3.141592653589793, phi=1.5707963267948966, lambda=1.5707963267948966 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,871 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,877 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 23:05:55,877 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,879 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,880 - normalization_1.norm - INFO - Normalized Z gate to RZ gate with lambda=3.141592653589793.
+2026-09-30 23:05:55,880 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,885 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 23:05:55,885 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,888 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,889 - normalization_1.norm - INFO - Normalized S gate to RZ gate with lambda=1.5707963267948966.
+2026-09-30 23:05:55,890 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,895 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,895 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,896 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,897 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,897 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,902 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 23:05:55,903 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,905 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,906 - normalization_1.norm - INFO - Normalized T gate to RZ gate with lambda=0.7853981633974483.
+2026-09-30 23:05:55,906 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,911 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 23:05:55,911 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,913 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,914 - normalization_1.norm - INFO - Normalized Tdg gate to RZ gate with lambda=-0.7853981633974483.
+2026-09-30 23:05:55,914 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,918 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 23:05:55,919 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,919 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,919 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,921 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,921 - normalization_1.norm - INFO - Normalizing sx using its definition.
+2026-09-30 23:05:55,922 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,922 - normalization_1.norm - INFO - Normalized Sdg gate to RZ gate with lambda=-1.5707963267948966.
+2026-09-30 23:05:55,922 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,927 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,927 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,929 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,930 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,930 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,939 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 23:05:55,940 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,942 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,943 - normalization_1.norm - INFO - Normalized RX gate with theta=0.731 to H-RZ-H sequence.
+2026-09-30 23:05:55,943 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,947 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 23:05:55,948 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,950 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,950 - normalization_1.norm - INFO - Normalized RY gate with theta=0.731 to RZ-H-RZ-H-RZ sequence.
+2026-09-30 23:05:55,951 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,956 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 23:05:55,956 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.731 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,956 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,959 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,959 - normalization_1.norm - INFO - Normalizing p using its definition.
+2026-09-30 23:05:55,960 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.731 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,960 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,975 - normalization_1.norm - INFO - Normalized U gate with theta=0.731, phi=-0.413, lambda=1.127 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,975 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,978 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,978 - normalization_1.norm - INFO - Normalized U gate with theta=0.731, phi=-0.413, lambda=1.127 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,979 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,984 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,984 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,987 - normalization_1.norm - INFO - Dag normalization complete
+2026-09-30 23:05:55,988 - normalization_1.norm - INFO - Normalized U gate with theta=0.0, phi=0.0, lambda=0.0 to RZ-RY-RZ sequence.
+2026-09-30 23:05:55,988 - normalization_1.norm - INFO - Dag normalization complete

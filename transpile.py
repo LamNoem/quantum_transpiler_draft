@@ -8,17 +8,20 @@ logger = logging.getLogger(__name__)
 
 ####### Stage 0 ######################
 
+logger.info("Stage 0: Parser")
+
 qasm_file = input("Path to qasm: ")
+logger.info(f"qasm file: {qasm_file}")
 
 raw_input_circuit = parser_0(qasm_file)
 
-logger.info("circuit loaded")
+
 
 target_file = input("Path to target: ")
+logger.info(f"target file: {target_file}")
 
 target_specs = Target(target_file)
 
-logger.info("Target loaded")
 
 plot_parser_0(raw_input_circuit, target_specs)
 
@@ -30,6 +33,8 @@ logger.info("Stage 1: Normalization")
 
 norm_dag = Norm(raw_input_circuit.DAG_circuit)
 plot_norm_dag(norm_dag.normalized_dag)
+
+logger.info("Stage 1: done")
 
 
 

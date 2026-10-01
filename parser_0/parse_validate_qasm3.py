@@ -36,6 +36,8 @@ class parser_0:
             # BUG FIX: Use 'from e' to chain the exception and preserve the traceback
             raise ValueError(f"Initial load into qiskit failed: {e}") from e
 
+        logger.info("circuit loaded")
+
     # Check circuit is within supported feature set.
     # No measurements / resets / classical feedback or additional ancillas, 3 qubit max.
     def verify_circuit_supported(self, circuit: qiskit.QuantumCircuit):
@@ -77,6 +79,7 @@ class parser_0:
                 "Unsupported circuit: classical feedback or classical vars detected."
             )
         self.final_measure_logical_qubits = final_measure_nodes
+        logger.info("converted to dag")
 
     def store_metadata(self, circuit: qiskit.QuantumCircuit):
         # metadata cannot be sent to qiskit circuit through OpenQASM

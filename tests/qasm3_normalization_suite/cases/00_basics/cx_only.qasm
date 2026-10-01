@@ -1,0 +1,10 @@
+// TEST: 00_basics/cx_only
+// KIND: normalize
+// PURPOSE: Preserve control/target order for an internal CX.
+// EXPECTED: Normalize the unitary body to h, x, rz, cx; preserve its operator and wires.
+
+OPENQASM 3.0;
+include "stdgates.inc";
+
+qubit[2] q;
+cx q[0], q[1];

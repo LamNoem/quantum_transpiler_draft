@@ -1,0 +1,18 @@
+{
+  "qasm_file_count": 201,
+  "counts_by_kind": {
+    "normalize": 140,
+    "feature_probe": 24,
+    "policy_probe": 8,
+    "reject_policy": 9,
+    "invalid_qasm": 20
+  },
+  "manifest_paths_present": true,
+  "python_ast_checks_passed": true,
+  "qasm_balanced_delimiter_audit_passed_for_nonnegative_cases": true,
+  "qasm_parser_or_semantic_validation_performed": false,
+  "qiskit_runner_execution_performed": false,
+  "numpy_math_checks_executed": true,
+  "helper_logic_test_doubles_executed": true,
+  "notes": "No QASM or Qiskit pass claims are made. Delimiter counts are not syntax validation."
+}
