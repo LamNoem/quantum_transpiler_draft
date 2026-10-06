@@ -476,3 +476,12 @@ high level inputs intake idea
 python transpile.py \
     --circuit examples/test.qasm \
     --target targets/line_3.json
+
+
+
+
+Circuit + hardware graph + gate durations
+  → initial placement
+  → routing
+  → dependency/resource-aware scheduling
+  → executable circuit + cost report

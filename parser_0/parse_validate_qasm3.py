@@ -47,7 +47,7 @@ class parser_0:
         if self.num_ancillas > 0 and not parser_0.ancillas_supported:
             logger.error("Does not support ancillas.")
             raise ValueError("Does not support ancillas.")
-        elif self.num_qubits > parser_0.max_qubits:
+        elif 0 >= self.num_qubits or self.num_qubits > parser_0.max_qubits:
             logger.error(f"Does not support more than {parser_0.max_qubits} qubits")
             raise ValueError(f"Does not support more than {parser_0.max_qubits} qubits")
 

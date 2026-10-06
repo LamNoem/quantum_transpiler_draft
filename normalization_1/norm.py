@@ -4,6 +4,7 @@ from qiskit.converters import circuit_to_dag, dag_to_circuit
 from math import pi
 from qiskit import QuantumCircuit
 from general.log_config import logging
+from qiskit.circuit.library import HGate, XGate, RZGate, CXGate, RXGate, RYGate, ZGate, SGate, SdgGate, TGate, TdgGate, UGate
 import networkx as nx
 import copy
 
@@ -12,7 +13,15 @@ logger = logging.getLogger(__name__)
 
 class Norm:
 
-    INTERNAL_GATES  = ["h", "x", "rz", "cx",]
+    # INTERNAL_GATES  = ["h", "x", "rz", "cx",]
+
+
+    INTERNAL_GATE_TYPES = (
+        HGate,
+        XGate,
+        RZGate,
+        CXGate,
+    )
     
     def __init__(self, dag):
         self.orig_dag = circuit_to_dag(dag_to_circuit(dag))
@@ -146,25 +155,47 @@ class Norm:
         return circuit_to_dag(qc)
 
 
+    # KNOWN_NORM = {
+    #     "rx": norm_rx,
+    #     "ry": norm_ry,
+    #     "z": norm_z,
+    #     "s": norm_s,
+    #     "sdg": norm_sdg,
+    #     "t": norm_t,
+    #     "tdg": norm_tdg,
+    #     "u": norm_u,
+    # }
+
     KNOWN_NORM = {
-        "rx": norm_rx,
-        "ry": norm_ry,
-        "z": norm_z,
-        "s": norm_s,
-        "sdg": norm_sdg,
-        "t": norm_t,
-        "tdg": norm_tdg,
-        "u": norm_u,
+        RXGate: norm_rx,
+        RYGate: norm_ry,
+        ZGate: norm_z,
+        SGate: norm_s,
+        SdgGate: norm_sdg,
+        TGate: norm_t,  
+        TdgGate: norm_tdg,
+        UGate: norm_u,
+
     }
+
+    def is_internal_gate(self, op):
+
+        if isinstance(op, (HGate, XGate, RZGate)):
+            return True
+
+        if isinstance(op, CXGate):
+            return op.ctrl_state == 1
+
+        return False
 
     def normalize_node(self, node) -> tuple[nx.DiGraph, int]:
 
 
-        if node.op.name in self.KNOWN_NORM:
-            # We explicitly know how we want to lower it.
-            return self.KNOWN_NORM[node.op.name](node), 0
+        for gate_type, norm_func in self.KNOWN_NORM.items():
+            if isinstance(node.op, gate_type):
+                return norm_func(node), 0
 
-        elif node.op.definition is not None:
+        if node.op.definition is not None:
             # Optional fallback for composite/custom gates.
             logger.info(f"Normalizing {node.op.name} using its definition.")
             return circuit_to_dag(node.op.definition), 1
@@ -180,7 +211,8 @@ class Norm:
             not_normalized = 0
 
             for node in dag.op_nodes():
-                if node.op.name not in self.INTERNAL_GATES:
+                # if node.op.name not in self.INTERNAL_GATES:
+                if not self.is_internal_gate(node.op):
                     sub_dag, norm_flag = self.normalize_node(node)
                     dag.substitute_node_with_dag(node, sub_dag)
                     not_normalized |= norm_flag
