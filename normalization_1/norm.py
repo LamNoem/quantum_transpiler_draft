@@ -4,7 +4,7 @@ from qiskit.converters import circuit_to_dag, dag_to_circuit
 from math import pi
 from qiskit import QuantumCircuit
 from general.log_config import logging
-from qiskit.circuit.library import HGate, XGate, RZGate, CXGate, RXGate, RYGate, ZGate, SGate, SdgGate, TGate, TdgGate, UGate
+from qiskit.circuit.library import HGate, XGate, RZGate, CXGate, RXGate, RYGate, ZGate, SGate, SdgGate, TGate, TdgGate, UGate, Barrier
 import networkx as nx
 import copy
 
@@ -178,10 +178,13 @@ class Norm:
 
     }
 
-    def is_internal_gate(self, op):
+    def is_internal_gate_directive(self, op):
 
         if isinstance(op, (HGate, XGate, RZGate)):
             return True
+
+        if isinstance(op, (Barrier)):
+                return True
 
         if isinstance(op, CXGate):
             return op.ctrl_state == 1
@@ -212,7 +215,7 @@ class Norm:
 
             for node in dag.op_nodes():
                 # if node.op.name not in self.INTERNAL_GATES:
-                if not self.is_internal_gate(node.op):
+                if not self.is_internal_gate_directive(node.op):
                     sub_dag, norm_flag = self.normalize_node(node)
                     dag.substitute_node_with_dag(node, sub_dag)
                     not_normalized |= norm_flag
