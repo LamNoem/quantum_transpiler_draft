@@ -1,15 +1,10 @@
 learn about quantum gates
-finish test nomalization
+
 do logging for all steps
 
-decide how barriers are handled.
 
-handle repeated measurements: turn into one measurement.
+finish optmizer
 
-handle measurements writing to the same classical bit (disallow or preserve order and overrite)
+write tests for optimizer
 
-reject delays
-
-
-| `11_reject_policy` | 9 | Qubit reuse after measurement, reset and classical control. |
-then connect validator and test decisions.
+optimizer equiv check (up to global phase) might not be sufficient

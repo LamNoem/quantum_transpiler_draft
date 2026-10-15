@@ -7,6 +7,8 @@ from general.log_config import logging
 from qiskit.circuit.library import HGate, XGate, RZGate, CXGate, RXGate, RYGate, ZGate, SGate, SdgGate, TGate, TdgGate, UGate, Barrier
 import networkx as nx
 import copy
+from collections import deque
+from qiskit.quantum_info import Operator
 
 
 logger = logging.getLogger(__name__)
@@ -16,27 +18,424 @@ class OptimGates:
     ITER_LIMIT = 10
 
     def __init__(self, norm_dag):
-        self.optim_dag = self.simple_optimize(circuit_to_dag(dag_to_circuit(norm_dag)))
+        self.orig_norm_dag = norm_dag,
+        self.optim_dag = self.full_optimize(circuit_to_dag(dag_to_circuit(norm_dag))),
+        self.gate_count = (self.optim_dag).size(),
+        self.depth = (self.optim_dag).depth(),
+        self.equiv_check = (Operator(dag_to_circuit(self.orig_norm_dag))).equiv(Operator(dag_to_circuit(self.optim_dag)))
 
-    def simple_optimize(self, norm_dag):
+
+
+    def full_optimize(self, norm_dag, beam_width=8, max_depth=5):
         """
-        inverse cancellation (HH, XX, CX-CX)
+         Greedy optimization -> beam search -> greedy optimization.
 
-        adjacent RZ
+        For each legal commutation, branch into:
+            A. Commute, but perform no local optimization.
+            B. Commute, then apply ONE local optimization.
 
-        non adjacent optimization -> to do /learn
+        If multiple local optimizations are available,
+        create a separate branch for each.
 
-        repeat passes until no more optimization is possible
+        Currently supports unconditional H, X, RZ, CX.
 
-        maintain equiv and qubit identities.
+                            1. Initial greedy optimization
+                                Remove obvious redundancies
+
+                            2. Beam search — repeat up to max_depth
+                                For every legal commutation, explore:
+                        Branch A                            Branch B
+                        Commute only                        Commute + one local rewrite
+                        Score, deduplicate, retain best beam_width states
+
+                            3. Final greedy optimization
+                    Clean up remaining adjacent cancellations and merge  
         """
 
-        for _ in range(self.ITER_LIMIT):
-            optimized = self.inverse_cancellation(norm_dag)
-            optimized |= self.merge_adjacent_RZ(norm_dag)
+        if beam_width < 1 or max_depth < 0:
+            raise ValueError("Invalid beam width or search depth")
 
-            if not optimized:
+        allowed = {"h", "x", "rz", "cx"}
+
+        # Keep the first implementation restricted to the
+        # unitary gate set used by your normalized circuits.
+        if any(
+            node.op.name not in allowed or node.cargs
+            for node in norm_dag.op_nodes()
+        ):
+            raise ValueError("Unsupported operation in full_optimize")
+
+        # -------------------------------------------------
+        # Helpers
+        # -------------------------------------------------
+
+        def clone(dag):
+            return circuit_to_dag(dag_to_circuit(dag))
+
+        def cost(dag):
+            # Prioritize CX count, then total gates, then depth.
+            return (
+                dag.count_ops().get("cx", 0),
+                dag.size(),
+                dag.depth()
+            )
+
+        def circuit_key(dag):
+            return (
+                dag.num_qubits(),
+                tuple(
+                    (
+                        node.op.name,
+                        tuple(
+                            dag.find_bit(q).index
+                            for q in node.qargs
+                        ),
+                        tuple(str(p) for p in node.op.params)
+                    )
+                    for node in dag.topological_op_nodes()
+                )
+            )
+
+        def commute(a, b):
+            """
+            Conservative commutation rules for the
+            normalized gate set.
+            """
+
+            # Disjoint-qubit operations are already
+            # independent in the DAG.
+            if not set(a.qargs).intersection(b.qargs):
+                return False
+
+            x = a.op.name
+            y = b.op.name
+
+            # Identical gate names on identical operands
+            # commute (including RZ with different angles).
+            if x == y and a.qargs == b.qargs:
+                return True
+
+            # CX gates commute when they share a control,
+            # or when they share a target.
+            if x == y == "cx":
+                return (
+                    a.qargs[0] == b.qargs[0]
+                    or a.qargs[1] == b.qargs[1]
+                )
+
+            # Handle a CX together with RZ or X.
+            if x == "cx" and y in {"rz", "x"}:
+                cx, one = a, b
+
+            elif y == "cx" and x in {"rz", "x"}:
+                cx, one = b, a
+
+            else:
+                return False
+
+            if one.op.name == "rz":
+                # RZ on the control commutes with CX.
+                return one.qargs[0] == cx.qargs[0]
+
+            # X on the target commutes with CX.
+            return one.qargs[0] == cx.qargs[1]
+
+        def legal_moves(dag):
+            nodes = list(dag.topological_op_nodes())
+
+            # Use Qiskit's DAG node IDs, not Python object IDs
+            positions = {
+                node._node_id: i
+                for i, node in enumerate(nodes)
+            }
+
+            moves = []
+
+            for node in nodes:
+                for succ in dag.op_successors(node):
+
+                    if not commute(node, succ):
+                        continue
+
+                    # Check for intermediate dependency paths
+                    descendants = {
+                        n._node_id for n in dag.descendants(node)
+                    }
+                    ancestors = {
+                        n._node_id for n in dag.ancestors(succ)
+                    }
+
+                    if descendants & ancestors:
+                        continue
+
+                    moves.append((
+                        positions[node._node_id],
+                        positions[succ._node_id]
+                    ))
+
+            return moves
+
+        def local_rewrites(dag, moved_nodes):
+            """
+            Find optimizations involving the swapped gates
+            or their immediate predecessors.
+
+            Return pairs of operation indices.
+            """
+
+            relevant = list(moved_nodes)
+
+            # A commutation may create a new adjacent pair
+            # immediately before either moved gate.
+            for node in moved_nodes:
+                relevant.extend(dag.op_predecessors(node))
+
+            positions = {
+                n._node_id: i
+                for i, n in enumerate(dag.topological_op_nodes())
+            }
+
+            rewrites = set()
+
+            for node in relevant:
+                if node.op.name not in allowed:
+                    continue
+
+                succ = self.find_doubled_op(dag, node)
+
+                if succ is None:
+                    continue
+
+                if node.op.name != succ.op.name:
+                    continue
+
+                rewrites.add((
+                    positions[node._node_id],
+                    positions[succ._node_id]
+                ))
+
+            return sorted(rewrites)
+
+        def apply_one_rewrite(dag, rewrite):
+            """
+            Apply exactly one inverse cancellation
+            or one adjacent RZ merge.
+            """
+
+            nodes = list(dag.topological_op_nodes())
+
+            node = nodes[rewrite[0]]
+            succ = nodes[rewrite[1]]
+
+            if node.op.name == "rz":
+                theta = (
+                    node.op.params[0]
+                    + succ.op.params[0]
+                )
+
+                dag.substitute_node(
+                    node,
+                    RZGate(theta),
+                    inplace=True
+                )
+                dag.remove_op_node(succ)
+
+            else:
+                # HH, XX, CX-CX
+                dag.remove_op_node(succ)
+                dag.remove_op_node(node)
+
+        # -------------------------------------------------
+        # Stage 1: Initial greedy optimization
+        # -------------------------------------------------
+
+        initial = self.greedy_optimize(clone(norm_dag))
+
+        best_dag = initial
+        best_cost = cost(initial)
+
+        beam = [initial]
+
+        # Remember states actually visited, not merely
+        # generated and discarded by beam selection.
+        visited = set()
+
+        # Preserve retained states from earlier depths
+        # for the final greedy comparison.
+        finalists = [initial]
+
+        # -------------------------------------------------
+        # Stage 2: Beam search
+        # -------------------------------------------------
+        logger.info(f"starting beam search for optim, not logging best sequence yet")
+        for _ in range(max_depth):
+
+            # Deduplicate candidates within this depth.
+            candidates = {}
+
+            for dag in beam:
+
+                parent_key = circuit_key(dag)
+
+                if parent_key in visited:
+                    continue
+
+                visited.add(parent_key)
+
+                # Find every legal adjacent commutation.
+                moves = legal_moves(dag)
+                print("Current circuit:")
+                print(dag_to_circuit(dag).draw())
+                print("Legal moves:", moves)
+
+                for i, j in moves:
+
+                    # Independent copy for this commutation.
+                    trial = clone(dag)
+
+                    nodes = list(trial.topological_op_nodes())
+                    first = nodes[i]
+                    second = nodes[j]
+
+                    # Perform the selected commutation.
+                    trial.swap_nodes(first, second)
+
+                    # BRANCH A:
+                    # Keep the commuted circuit unchanged.
+                    branches = [trial]
+
+                    # BRANCH B:
+                    # Apply one possible local optimization.
+                    # Separate branch for each possible rewrite.
+                    rewrites = local_rewrites(
+                        trial, (first, second)
+                    )
+
+                    for rewrite in rewrites:
+                        variant = clone(trial)
+
+                        apply_one_rewrite(variant, rewrite)
+
+                        branches.append(variant)
+
+                    # Evaluate every generated branch.
+                    for branch in branches:
+
+                        key = circuit_key(branch)
+
+                        if key in visited or key in candidates:
+                            continue
+
+                        score = cost(branch)
+
+                        candidates[key] = (score, branch)
+
+                        if score < best_cost:
+                            best_cost = score
+                            best_dag = branch
+
+            if not candidates:
                 break
+
+            # Retain only the best beam_width states.
+            ranked = sorted(
+                candidates.values(),
+                key=lambda item: item[0]
+            )
+
+            beam = [
+                dag
+                for score, dag in ranked[:beam_width]
+            ]
+
+            finalists.extend(beam)
+
+        # -------------------------------------------------
+        # Stage 3: Final greedy optimization
+        # -------------------------------------------------
+
+        # Also consider the best state encountered at any
+        # intermediate search depth.
+        finalists.append(best_dag)
+
+        # Finish every retained candidate greedily,
+        # then select the cheapest final circuit.
+        results = [
+            self.greedy_optimize(clone(dag))
+            for dag in finalists
+        ]
+
+        return min(results, key=cost)
+
+
+    def greedy_optimize(self, norm_dag):
+        """
+        Worklist-based optimization:
+        - Cancel HH, XX, CX-CX
+        - Merge adjacent RZ rotations
+        - Recheck only locally affected gates
+        """
+
+        # Initially, every gate needs to be checked
+        worklist = deque(norm_dag.topological_op_nodes())
+
+        # Track removed nodes still referenced by the queue
+        removed = set()
+
+        while worklist:
+            node = worklist.popleft()
+
+            # Skip nodes already removed from the DAG
+            if node._node_id in removed:
+                continue
+
+            if not isinstance(node.op, (HGate, XGate, CXGate, RZGate)):
+                continue
+
+            succ = self.find_doubled_op(norm_dag, node)
+
+            if succ is None:
+                continue
+
+            # Both gates must be of the same type
+            if type(node.op) is not type(succ.op):
+                continue
+
+            # Save the predecessors BEFORE modifying the DAG
+            predecessors = list(norm_dag.op_predecessors(node))
+
+            # CASE 1: Inverse cancellation
+            if isinstance(node.op, (HGate, XGate, CXGate)):
+
+                norm_dag.remove_op_node(succ)
+                norm_dag.remove_op_node(node)
+
+                logger.info(f"Inverse cancellation of {node.op} with nodes {node._node_id} and {succ._node_id}")
+                removed.add(node._node_id)
+                removed.add(succ._node_id)
+                
+
+                # Removal may create new adjacent pairs
+                worklist.extend(predecessors)
+
+            # CASE 2: RZ merging
+            elif isinstance(node.op, RZGate):
+
+                theta = node.op.params[0] + succ.op.params[0]
+
+                logger.info(f"RZ merge of {node.op} with nodes {node._node_id} and {succ._node_id}")
+
+                norm_dag.remove_op_node(succ)
+                removed.add(succ._node_id)
+
+                # Keep the existing node in the DAG
+                merged_node = norm_dag.substitute_node(
+                    node, RZGate(theta), inplace=True
+                )
+
+                # Check for more RZ gates on either side
+                worklist.append(merged_node)
+                worklist.extend(predecessors)
 
         return norm_dag
 
@@ -59,36 +458,30 @@ class OptimGates:
         #     (CX1, H, q0),
         #     (CX1, CX2, q1)
         # ] and fails if CX2 chosen as successor
+        # Outgoing edges identified by their qubit
+        # and destination DAG node ID
+        outgoing = {
+            (wire, dest._node_id)
+            for _, dest, wire in norm_dag.edges(node)
+        }
 
-        edges = list(norm_dag.edges(node))
+        for succ in norm_dag.op_successors(node):
 
-        for succ in norm_dag.successors(node):
-            if not isinstance(succ, DAGOpNode):
-                continue
-
+            # Must operate on the same ordered qubits
             if succ.qargs != node.qargs:
                 continue
-            adjacent = True
-            # for every qubit involved in the current gate
-            for node_q in node.qargs:
-                 # Check the edges connected to the current gate
-                found = False
-                for _, dest_gate, edge_q in edges:
-                    # for every qubit involved, 
-                    # There must be a direct edge to the SAME successor
-                    if dest_gate is succ and edge_q== node_q:
-                        found = True
-                        break
 
-                # If no such edge exists for even one qubit,
-                # the two gates are not fully adjacent
-                if not found:
-                    adjacent = False
-                    break
+            # Every qubit must lead directly to this successor
+            adjacent = all(
+                (q, succ._node_id) in outgoing
+                for q in node.qargs
+            )
 
             if adjacent:
                 return succ
+
         return None
+        
 
 
     def inverse_cancellation(self, norm_dag):
@@ -134,7 +527,3 @@ class OptimGates:
                 break
 
         return optim_flag
-
-
-
-    
