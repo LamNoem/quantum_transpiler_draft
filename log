@@ -325,3 +325,4 @@
 2026-10-15 22:32:49,102 - simple_optim_2.optim_gates - INFO - greedy optimize begin
 2026-10-15 22:32:49,102 - simple_optim_2.optim_gates - INFO - greedy optimize end
 2026-10-15 22:32:49,102 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-15 22:40:28,048 - __main__ - INFO - Stage 0: Parser
