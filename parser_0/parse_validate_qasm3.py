@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class parser_0:
     ancillas_supported = False
-    max_qubits = 3
+    max_qubits = 5
     unsupport_circ_instruct = ["reset", "delay"]
 
     def __init__(self, qasm_file):

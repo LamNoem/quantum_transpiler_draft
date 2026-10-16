@@ -18,10 +18,18 @@ class OptimGates:
     ITER_LIMIT = 10
 
     def __init__(self, norm_dag):
-        self.orig_norm_dag = norm_dag,
-        self.optim_dag = self.full_optimize(circuit_to_dag(dag_to_circuit(norm_dag))),
-        self.gate_count = (self.optim_dag).size(),
-        self.depth = (self.optim_dag).depth(),
+        self.orig_norm_dag = norm_dag
+        self.orig_gate_count = len(
+                    self.orig_norm_dag.op_nodes(include_directives=False)
+                )
+        self.orig_depth = self.orig_norm_dag.depth()
+                
+
+        self.optim_dag = self.full_optimize(circuit_to_dag(dag_to_circuit(norm_dag)))
+        self.new_gate_count = len(
+            self.optim_dag.op_nodes(include_directives=False)
+        )
+        self.new_depth = self.optim_dag.depth()
         self.equiv_check = (Operator(dag_to_circuit(self.orig_norm_dag))).equiv(Operator(dag_to_circuit(self.optim_dag)))
 
 
@@ -51,16 +59,17 @@ class OptimGates:
                             3. Final greedy optimization
                     Clean up remaining adjacent cancellations and merge  
         """
-
+        logger.info("full optimize begin")
         if beam_width < 1 or max_depth < 0:
             raise ValueError("Invalid beam width or search depth")
 
-        allowed = {"h", "x", "rz", "cx"}
+        allowed_gates = {"h", "x", "rz", "cx"}
+        directives = {"barrier"}
 
         # Keep the first implementation restricted to the
         # unitary gate set used by your normalized circuits.
         if any(
-            node.op.name not in allowed or node.cargs
+            node.op.name not in allowed_gates|directives or node.cargs
             for node in norm_dag.op_nodes()
         ):
             raise ValueError("Unsupported operation in full_optimize")
@@ -76,7 +85,9 @@ class OptimGates:
             # Prioritize CX count, then total gates, then depth.
             return (
                 dag.count_ops().get("cx", 0),
-                dag.size(),
+                len(
+                    dag.op_nodes(include_directives=False)
+                ),
                 dag.depth()
             )
 
@@ -101,7 +112,11 @@ class OptimGates:
             Conservative commutation rules for the
             normalized gate set.
             """
-
+            # Barriers must remain fixed relative to operations
+            # on their qubit wires.
+            if a.op.name == "barrier" or b.op.name == "barrier":
+                return False
+            
             # Disjoint-qubit operations are already
             # independent in the DAG.
             if not set(a.qargs).intersection(b.qargs):
@@ -198,7 +213,8 @@ class OptimGates:
             rewrites = set()
 
             for node in relevant:
-                if node.op.name not in allowed:
+                # dont consider directives
+                if node.op.name not in allowed_gates:
                     continue
 
                 succ = self.find_doubled_op(dag, node)
@@ -365,6 +381,7 @@ class OptimGates:
             for dag in finalists
         ]
 
+        logger.info("full optimize end: not all actions are logged in this function needs to be fixed")
         return min(results, key=cost)
 
 
@@ -375,7 +392,7 @@ class OptimGates:
         - Merge adjacent RZ rotations
         - Recheck only locally affected gates
         """
-
+        logger.info("greedy optimize begin")
         # Initially, every gate needs to be checked
         worklist = deque(norm_dag.topological_op_nodes())
 
@@ -388,6 +405,11 @@ class OptimGates:
             # Skip nodes already removed from the DAG
             if node._node_id in removed:
                 continue
+
+            # Retrieve the current version of this node from the DAG.
+            # A queued DAGOpNode may hold outdated gate parameters
+            # after an in-place substitution.
+            node = norm_dag.node(node._node_id)
 
             if not isinstance(node.op, (HGate, XGate, CXGate, RZGate)):
                 continue
@@ -437,6 +459,7 @@ class OptimGates:
                 worklist.append(merged_node)
                 worklist.extend(predecessors)
 
+        logger.info("greedy optimize end")
         return norm_dag
 
     def find_doubled_op(self,norm_dag,node):

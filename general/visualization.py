@@ -12,7 +12,7 @@ from qiskit.visualization import dag_drawer
 
 def plot_parser_0(raw_input_circuit, target_specs):
     """Save and display the input circuit, target connectivity, and circuit DAG."""
-    output_dir = Path(__file__).resolve().parent.parent / "visuals"
+    output_dir = Path(__file__).resolve().parent.parent /"visuals"/"parser"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Save a PDF using Matplotlib without an external LaTeX installation.
@@ -67,7 +67,7 @@ def plot_parser_0(raw_input_circuit, target_specs):
 
 def plot_norm_dag(norm_dag):
     """Save and display the normalized circuit DAG."""
-    output_dir = Path(__file__).resolve().parent.parent / "visuals"
+    output_dir = Path(__file__).resolve().parent.parent /"visuals"/"norm"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     dag_image = dag_drawer(norm_dag)
@@ -75,6 +75,20 @@ def plot_norm_dag(norm_dag):
     dag_figure, dag_axes = plt.subplots(num="Normalized Circuit DAG", figsize=(8, 8), layout="constrained")
     dag_axes.imshow(dag_image)
     dag_axes.set_title("Normalized Circuit DAG")
+    dag_axes.set_axis_off()
+
+    # plt.show()
+
+def plot_optim_dag(norm_dag):
+    """Save and display optimized circuit DAG."""
+    output_dir = Path(__file__).resolve().parent.parent /"visuals"/"optim"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    dag_image = dag_drawer(norm_dag)
+    dag_image.save(output_dir / "optimized_circuit_dag.png")
+    dag_figure, dag_axes = plt.subplots(num="Optimized Circuit DAG", figsize=(8, 8), layout="constrained")
+    dag_axes.imshow(dag_image)
+    dag_axes.set_title("Optimized Circuit DAG")
     dag_axes.set_axis_off()
 
     # plt.show()
