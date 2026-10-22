@@ -326,3 +326,635 @@
 2026-10-15 22:32:49,102 - simple_optim_2.optim_gates - INFO - greedy optimize end
 2026-10-15 22:32:49,102 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
 2026-10-15 22:40:28,048 - __main__ - INFO - Stage 0: Parser
+2026-10-15 22:41:29,207 - __main__ - INFO - qasm file: 01_full_barrier_optimization.qasm
+2026-10-15 22:41:29,671 - parser_0.parse_validate_qasm3 - INFO - circuit loaded
+2026-10-15 22:41:29,673 - parser_0.parse_validate_qasm3 - INFO - Converted to DAG. Final measurement map: {}
+2026-10-15 22:41:38,989 - __main__ - INFO - target file: tests\targets\target1.json
+2026-10-15 22:41:38,991 - parser_0.input_target - INFO - Target loaded as physical connections graph and instruction connection graph
+2026-10-15 22:41:43,728 - __main__ - INFO - Stage 0 done
+2026-10-15 22:41:43,729 - __main__ - INFO - Stage 1: Normalization
+2026-10-15 22:41:43,729 - normalization_1.norm - INFO - Dag normalization complete
+2026-10-15 22:41:45,237 - __main__ - INFO - Stage 1: done
+2026-10-15 22:41:45,237 - __main__ - INFO - Stage 2: Optimize/Simplify
+2026-10-15 22:41:45,239 - simple_optim_2.optim_gates - INFO - full optimize begin
+2026-10-15 22:41:45,241 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,242 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 10 and 11
+2026-10-15 22:41:45,242 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:41:45,243 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:41:45,243 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 20 and 21
+2026-10-15 22:41:45,244 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 20 and 22
+2026-10-15 22:41:45,244 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,244 - simple_optim_2.optim_gates - INFO - starting beam search for optim, not logging best sequence yet
+2026-10-15 22:41:45,732 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,733 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,733 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,733 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,734 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,734 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,734 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,735 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,735 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,735 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,736 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,736 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,736 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,741 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,742 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:41:45,742 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,743 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,743 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:41:45,743 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,743 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,744 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:41:45,744 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,744 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,745 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,745 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,745 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,745 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,746 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,746 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,747 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,747 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,748 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,748 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,749 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,749 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,750 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:41:45,750 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,750 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,751 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,751 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,751 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,752 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,752 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,752 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,753 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,753 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:41:45,753 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,754 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,754 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:41:45,755 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,755 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,756 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,756 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,757 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,757 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,758 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:41:45,758 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,758 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,759 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,759 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,759 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,760 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,760 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,761 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:41:45,761 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,761 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,762 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:41:45,762 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,762 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,763 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:41:45,763 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,764 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,764 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,764 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,765 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,765 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,765 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,766 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,766 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:41:45,767 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,767 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,767 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:41:45,768 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,768 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,768 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:41:45,769 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,769 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:41:45,770 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:41:45,770 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-15 22:41:45,781 - __main__ - INFO - gate count diff (new-old):-14
+2026-10-15 22:41:45,781 - __main__ - INFO - depth diff (new-old):-6
+2026-10-15 22:43:03,037 - __main__ - INFO - Stage 0: Parser
+2026-10-15 22:43:13,218 - __main__ - INFO - qasm file: 01_full_barrier_optimization.qasm
+2026-10-15 22:43:13,670 - parser_0.parse_validate_qasm3 - INFO - circuit loaded
+2026-10-15 22:43:13,672 - parser_0.parse_validate_qasm3 - INFO - Converted to DAG. Final measurement map: {}
+2026-10-15 22:43:26,398 - __main__ - INFO - target file: tests\targets\target1.json
+2026-10-15 22:43:26,401 - parser_0.input_target - INFO - Target loaded as physical connections graph and instruction connection graph
+2026-10-15 22:43:31,596 - __main__ - INFO - Stage 0 done
+2026-10-15 22:43:31,596 - __main__ - INFO - Stage 1: Normalization
+2026-10-15 22:43:31,597 - normalization_1.norm - INFO - Dag normalization complete
+2026-10-15 22:43:32,987 - __main__ - INFO - Stage 1: done
+2026-10-15 22:43:32,987 - __main__ - INFO - Stage 2: Optimize/Simplify
+2026-10-15 22:43:32,987 - simple_optim_2.optim_gates - INFO - full optimize begin
+2026-10-15 22:43:32,988 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:32,988 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 10 and 11
+2026-10-15 22:43:32,988 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:43:32,988 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:43:32,989 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 20 and 21
+2026-10-15 22:43:32,989 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 20 and 22
+2026-10-15 22:43:32,989 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:32,989 - simple_optim_2.optim_gates - INFO - starting beam search for optim, not logging best sequence yet
+2026-10-15 22:43:33,585 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,585 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,585 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,586 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,586 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,587 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,587 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,587 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,588 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,588 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,588 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,589 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,589 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,589 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,589 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:43:33,590 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,590 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,590 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:43:33,591 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,591 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,591 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:43:33,591 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,592 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,592 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 24 and 25
+2026-10-15 22:43:33,592 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,593 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,593 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 23 and 24
+2026-10-15 22:43:33,593 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,593 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,594 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,594 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,595 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,595 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,595 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,595 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,596 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,596 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,596 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,597 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,597 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,597 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,597 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:43:33,598 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,598 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,598 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,598 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,599 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,599 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 22 and 23
+2026-10-15 22:43:33,600 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,600 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,600 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 21 and 22
+2026-10-15 22:43:33,601 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,601 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,601 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,602 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,602 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,602 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,602 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:43:33,603 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,603 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,603 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:43:33,604 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,604 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,604 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,605 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,605 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,605 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,606 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:43:33,606 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,606 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,606 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,607 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,607 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,607 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,607 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,607 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,608 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:43:33,608 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,608 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,608 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,609 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,609 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 20 and 21
+2026-10-15 22:43:33,609 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,609 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,610 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 19 and 20
+2026-10-15 22:43:33,610 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,610 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,610 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 18 and 19
+2026-10-15 22:43:33,611 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,611 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,611 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,611 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,611 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,612 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 17 and 18
+2026-10-15 22:43:33,612 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,612 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,612 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 16 and 17
+2026-10-15 22:43:33,613 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,613 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:43:33,613 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:43:33,613 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-15 22:43:33,623 - __main__ - INFO - gate count diff (new-old):-14
+2026-10-15 22:43:33,623 - __main__ - INFO - depth diff (new-old):-6
+2026-10-15 22:44:28,290 - __main__ - INFO - Stage 0: Parser
+2026-10-15 22:44:32,124 - __main__ - INFO - qasm file: 02_partial_barrier_optimization.qasm
+2026-10-15 22:44:32,605 - parser_0.parse_validate_qasm3 - INFO - circuit loaded
+2026-10-15 22:44:32,649 - parser_0.parse_validate_qasm3 - INFO - Converted to DAG. Final measurement map: {}
+2026-10-15 22:44:47,199 - __main__ - INFO - target file: tests\targets\target1.json
+2026-10-15 22:44:47,202 - parser_0.input_target - INFO - Target loaded as physical connections graph and instruction connection graph
+2026-10-15 22:44:51,953 - __main__ - INFO - Stage 0 done
+2026-10-15 22:44:51,953 - __main__ - INFO - Stage 1: Normalization
+2026-10-15 22:44:51,954 - normalization_1.norm - INFO - Dag normalization complete
+2026-10-15 22:44:53,559 - __main__ - INFO - Stage 1: done
+2026-10-15 22:44:53,559 - __main__ - INFO - Stage 2: Optimize/Simplify
+2026-10-15 22:44:53,559 - simple_optim_2.optim_gates - INFO - full optimize begin
+2026-10-15 22:44:53,560 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:53,560 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 23 and 24
+2026-10-15 22:44:53,560 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 25 and 26
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 31 and 32
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 34 and 35
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 51 and 52
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 53 and 54
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 65 and 66
+2026-10-15 22:44:53,561 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:53,562 - simple_optim_2.optim_gates - INFO - starting beam search for optim, not logging best sequence yet
+2026-10-15 22:44:54,474 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,475 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,476 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,476 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,477 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,477 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,477 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,478 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,478 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,479 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 39 and 40
+2026-10-15 22:44:54,479 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,479 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,479 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 38 and 39
+2026-10-15 22:44:54,480 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,480 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,481 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 43 and 44
+2026-10-15 22:44:54,481 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,481 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,481 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 42 and 43
+2026-10-15 22:44:54,482 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,482 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,483 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,483 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,483 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,484 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,484 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,484 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,485 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,485 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,486 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,487 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,488 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 41 and 42
+2026-10-15 22:44:54,488 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,489 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,490 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 40 and 41
+2026-10-15 22:44:54,490 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,491 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,492 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,492 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,493 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,493 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,494 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,494 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,495 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,495 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,495 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,496 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,496 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 39 and 40
+2026-10-15 22:44:54,496 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,497 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,497 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,497 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,498 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,498 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,499 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,499 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,499 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,500 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,500 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,500 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,501 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,501 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,502 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,502 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,503 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,503 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,504 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,504 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,504 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,505 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,506 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,506 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,507 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,508 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,508 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 39 and 40
+2026-10-15 22:44:54,509 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,509 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,510 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 38 and 39
+2026-10-15 22:44:54,510 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,510 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,511 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 22:44:54,511 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,511 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,512 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 22:44:54,512 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,512 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,513 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,513 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,513 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 22:44:54,513 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,514 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,514 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 22:44:54,514 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,514 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,515 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 22:44:54,515 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,515 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,516 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,517 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,517 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 39 and 40
+2026-10-15 22:44:54,517 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,517 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,518 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 38 and 39
+2026-10-15 22:44:54,518 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,518 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,519 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 22:44:54,519 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,519 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,520 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 22:44:54,520 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,520 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,520 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 22:44:54,521 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,521 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,522 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,522 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 22:44:54,523 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 22:44:54,523 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-15 22:44:54,543 - __main__ - INFO - gate count diff (new-old):-17
+2026-10-15 22:44:54,544 - __main__ - INFO - depth diff (new-old):-3
+2026-10-15 23:40:47,043 - __main__ - INFO - Stage 0: Parser
+2026-10-15 23:41:20,325 - __main__ - INFO - Stage 0: Parser
+2026-10-15 23:43:06,760 - __main__ - INFO - qasm file: 02_partial_barrier_optimization.qasm
+2026-10-15 23:43:07,400 - parser_0.parse_validate_qasm3 - INFO - circuit loaded
+2026-10-15 23:43:07,406 - parser_0.parse_validate_qasm3 - INFO - Converted to DAG. Final measurement map: {}
+2026-10-15 23:43:14,752 - __main__ - INFO - target file: tests\targets\target1.json
+2026-10-15 23:43:14,792 - parser_0.input_target - INFO - Target loaded as physical connections graph and instruction connection graph
+2026-10-15 23:43:21,017 - __main__ - INFO - Stage 0 done
+2026-10-15 23:43:21,017 - __main__ - INFO - Stage 1: Normalization
+2026-10-15 23:43:21,018 - normalization_1.norm - INFO - Dag normalization complete
+2026-10-15 23:43:22,674 - __main__ - INFO - Stage 1: done
+2026-10-15 23:43:22,674 - __main__ - INFO - Stage 2: Optimize/Simplify
+2026-10-15 23:43:22,715 - simple_optim_2.optim_gates - INFO - full optimize begin
+2026-10-15 23:43:22,715 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,718 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 23 and 24
+2026-10-15 23:43:22,718 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 25 and 26
+2026-10-15 23:43:22,718 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 31 and 32
+2026-10-15 23:43:22,719 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 34 and 35
+2026-10-15 23:43:22,720 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 51 and 52
+2026-10-15 23:43:22,720 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 53 and 54
+2026-10-15 23:43:22,720 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='x', num_qubits=1, num_clbits=0, params=[]) with nodes 65 and 66
+2026-10-15 23:43:22,721 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,721 - simple_optim_2.optim_gates - INFO - starting beam search for optim, not logging best sequence yet
+2026-10-15 23:43:22,961 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,962 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,963 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,963 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,964 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,964 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,964 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,965 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,965 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,966 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 39 and 40
+2026-10-15 23:43:22,966 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,966 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,966 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 38 and 39
+2026-10-15 23:43:22,967 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,967 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,967 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 43 and 44
+2026-10-15 23:43:22,968 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,968 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,968 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 42 and 43
+2026-10-15 23:43:22,969 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,969 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,970 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,970 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,970 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,971 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,971 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,971 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,972 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,972 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,973 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,973 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,973 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,974 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,974 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 41 and 42
+2026-10-15 23:43:22,974 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,975 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,975 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 40 and 41
+2026-10-15 23:43:22,975 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,976 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,976 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,976 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,977 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,977 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,978 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,978 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,979 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,979 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,980 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,981 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,981 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 39 and 40
+2026-10-15 23:43:22,982 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,982 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,982 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 38 and 39
+2026-10-15 23:43:22,983 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,983 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,984 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,984 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,984 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,985 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,985 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,985 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,986 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,986 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,987 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,987 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,987 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,988 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,988 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,988 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,989 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,989 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,990 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,990 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,990 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,991 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,991 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,991 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,992 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,992 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,993 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,993 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,993 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,994 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,994 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,994 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,995 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 39 and 40
+2026-10-15 23:43:22,995 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,995 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,996 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.125]) with nodes 38 and 39
+2026-10-15 23:43:22,996 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,996 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,997 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 23:43:22,997 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,997 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,998 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:22,998 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,998 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,999 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:22,999 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:22,999 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 23:43:22,999 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,000 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,000 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:23,000 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,001 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,001 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:23,001 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,001 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,002 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 34 and 35
+2026-10-15 23:43:23,002 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,002 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,003 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:23,003 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,003 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,004 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,004 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,004 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 39 and 40
+2026-10-15 23:43:23,005 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,005 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,005 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[0.375]) with nodes 38 and 39
+2026-10-15 23:43:23,005 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,006 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,006 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 37 and 38
+2026-10-15 23:43:23,006 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,007 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,007 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:23,007 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,007 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,008 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-15 23:43:23,008 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,008 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,009 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='cx', num_qubits=2, num_clbits=0, params=[]) with nodes 34 and 35
+2026-10-15 23:43:23,009 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,009 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,010 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,010 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-15 23:43:23,011 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-15 23:43:23,012 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-15 23:43:23,027 - __main__ - INFO - gate count diff (new-old):-17
+2026-10-15 23:43:23,027 - __main__ - INFO - depth diff (new-old):-3
+2026-10-15 23:43:23,028 - __main__ - INFO - equivalent check: True
+2026-10-15 23:43:23,028 - __main__ - INFO - Stage2 Optimizer done
+2026-10-16 00:09:04,266 - __main__ - INFO - Stage 0: Parser
+2026-10-16 00:09:12,154 - __main__ - INFO - qasm file: 01_ising_trotter_4q.qasm
+2026-10-16 00:09:12,846 - parser_0.parse_validate_qasm3 - INFO - circuit loaded
+2026-10-16 00:09:12,859 - parser_0.parse_validate_qasm3 - INFO - Converted to DAG. Final measurement map: {}
+2026-10-16 00:09:35,284 - __main__ - INFO - target file: tests\targets\target1.json
+2026-10-16 00:09:35,286 - parser_0.input_target - INFO - Target loaded as physical connections graph and instruction connection graph
+2026-10-16 00:09:41,188 - __main__ - INFO - Stage 0 done
+2026-10-16 00:09:41,188 - __main__ - INFO - Stage 1: Normalization
+2026-10-16 00:09:41,192 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,196 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,197 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,197 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,197 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,197 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,198 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,198 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,198 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,198 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,199 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,200 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,200 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,200 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,200 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,200 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,201 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,201 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,201 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,202 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,202 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,202 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,202 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,202 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,203 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,203 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,203 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,204 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,204 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,204 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,205 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,205 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,205 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,205 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,206 - normalization_1.norm - INFO - Normalizing zz_rotation using its definition.
+2026-10-16 00:09:41,206 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,206 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,206 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,207 - normalization_1.norm - INFO - Normalized RX gate with theta=-0.14 to H-RZ-H sequence.
+2026-10-16 00:09:41,208 - normalization_1.norm - INFO - Dag normalization complete
+2026-10-16 00:09:43,614 - __main__ - INFO - Stage 1: done
+2026-10-16 00:09:43,614 - __main__ - INFO - Stage 2: Optimize/Simplify
+2026-10-16 00:09:43,655 - simple_optim_2.optim_gates - INFO - full optimize begin
+2026-10-16 00:09:43,656 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-16 00:09:43,660 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 24 and 25
+2026-10-16 00:09:43,661 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 36 and 37
+2026-10-16 00:09:43,661 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 45 and 46
+2026-10-16 00:09:43,661 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 57 and 58
+2026-10-16 00:09:43,662 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 66 and 67
+2026-10-16 00:09:43,663 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 75 and 76
+2026-10-16 00:09:43,663 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 81 and 82
+2026-10-16 00:09:43,664 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 90 and 91
+2026-10-16 00:09:43,664 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 99 and 100
+2026-10-16 00:09:43,666 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 111 and 112
+2026-10-16 00:09:43,666 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 120 and 121
+2026-10-16 00:09:43,667 - simple_optim_2.optim_gates - INFO - Inverse cancellation of Instruction(name='h', num_qubits=1, num_clbits=0, params=[]) with nodes 132 and 133
+2026-10-16 00:09:43,667 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 23 and 26
+2026-10-16 00:09:43,675 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 35 and 38
+2026-10-16 00:09:43,676 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 44 and 47
+2026-10-16 00:09:43,676 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 56 and 59
+2026-10-16 00:09:43,676 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 65 and 68
+2026-10-16 00:09:43,676 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 74 and 77
+2026-10-16 00:09:43,677 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 80 and 83
+2026-10-16 00:09:43,677 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 89 and 92
+2026-10-16 00:09:43,677 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 98 and 101
+2026-10-16 00:09:43,677 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 110 and 113
+2026-10-16 00:09:43,677 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 119 and 122
+2026-10-16 00:09:43,678 - simple_optim_2.optim_gates - INFO - RZ merge of Instruction(name='rz', num_qubits=1, num_clbits=0, params=[-0.14]) with nodes 131 and 134
+2026-10-16 00:09:43,678 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-16 00:09:43,679 - simple_optim_2.optim_gates - INFO - starting beam search for optim, not logging best sequence yet
+2026-10-16 00:09:43,684 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-16 00:09:43,686 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-16 00:09:43,686 - simple_optim_2.optim_gates - INFO - greedy optimize begin
+2026-10-16 00:09:43,688 - simple_optim_2.optim_gates - INFO - greedy optimize end
+2026-10-16 00:09:43,688 - simple_optim_2.optim_gates - INFO - full optimize end: not all actions are logged in this function needs to be fixed
+2026-10-16 00:09:43,727 - __main__ - INFO - gate count diff (new-old):-36
+2026-10-16 00:09:43,727 - __main__ - INFO - depth diff (new-old):-9
+2026-10-16 00:09:43,727 - __main__ - INFO - equivalent check: True
+2026-10-16 00:09:43,727 - __main__ - INFO - Stage2 Optimizer done

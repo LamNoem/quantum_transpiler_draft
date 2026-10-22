@@ -11,3 +11,4 @@ QC-1 baseline,Inverse cancellation and adjacent RZ merging
 QC-2 baseline,Identity placement and shortest-path routing
 Physical cleanup,"The same two kinds of local simplification, restricted to legal output instructions"
 Execution,Local calculations and simulation; no quantum processor required
+consider for improved version,"external benchmark tools, MLIR/LLVM, for a set of known native gates (accept target, lower efficiently to IR according to target, optimize, placement/routing, native translation, optimize again. al while keeping native rep in mind)"

@@ -44,6 +44,8 @@ logger.info("Stage 2: Optimize/Simplify")
 optim_dag = OptimGates(norm_dag.normalized_dag)
 logger.info(f"gate count diff (new-old):{optim_dag.new_gate_count - optim_dag.orig_gate_count}")
 logger.info(f"depth diff (new-old):{optim_dag.new_depth - optim_dag.orig_depth}")
+logger.info(f"equivalent check: {optim_dag.equiv_check}")
+logger.info(f"Stage2 Optimizer done")
 
 plot_optim_dag(optim_dag.optim_dag)
 

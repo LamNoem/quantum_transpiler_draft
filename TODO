@@ -3,8 +3,8 @@ learn about quantum gates
 do logging for all steps
 
 
-finish optmizer
+start stage 3
 
-write tests for optimizer
 
-optimizer equiv check (up to global phase) might not be sufficient
+
+is the equivalence check after optimizer correct?

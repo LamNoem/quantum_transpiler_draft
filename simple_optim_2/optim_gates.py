@@ -34,7 +34,7 @@ class OptimGates:
 
 
 
-    def full_optimize(self, norm_dag, beam_width=8, max_depth=5):
+    def full_optimize(self, norm_dag, beam_width=12, max_depth=20):
         """
          Greedy optimization -> beam search -> greedy optimization.
 
@@ -300,9 +300,9 @@ class OptimGates:
 
                 # Find every legal adjacent commutation.
                 moves = legal_moves(dag)
-                print("Current circuit:")
-                print(dag_to_circuit(dag).draw())
-                print("Legal moves:", moves)
+                # print("Current circuit:")
+                # print(dag_to_circuit(dag).draw())
+                # print("Legal moves:", moves)
 
                 for i, j in moves:
 

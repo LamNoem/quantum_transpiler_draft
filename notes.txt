@@ -485,3 +485,22 @@ Circuit + hardware graph + gate durations
   → routing
   → dependency/resource-aware scheduling
   → executable circuit + cost report
+
+
+
+Notes for imporved version:
+external benchmark tools, MLIR/LLVM, 
+for a set of known native gates (accept target, lower to an efficient IR/InternalGateSet according to target, optimize, placement/routing, native translation, optimize again. all while keeping native rep in mind)
+
+
+
+----------------------------------------------------------------
+
+Direct Comparison Summary
+
+
+Feature	                  Quantum Transpiler	                                                                        Quantum Compiler
+Input	                  An existing quantum circuit (often containing generic or non-native gates).	            High-level algorithmic intent OR an optimized native-gate circuit.
+Output                  An optimized, hardware-compatible quantum circuit (still represented as gates).	      A low-level quantum circuit OR a physical pulse control schedule (waveforms/lasers).
+Level of Abstraction	Horizontal (stays within the "gate and circuit" abstraction layer).	                  Vertical (lowers the code to a lower level of hardware abstraction).
+Primary Goal	      Optimization for physical topology, routing, and noise reduction.	                        Algorithm synthesis or generation of actual physical hardware instructions.
