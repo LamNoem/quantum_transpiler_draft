@@ -1,24 +1,9 @@
 {
-  "optional_name": "three_qubit_line",
   "native_set": "demo_cx",
-  "num_qubits": 3,
-  "phys_connect": [
-    [0, 1],
-    [1, 2]
-  ],
-  "instruct_connect": {
-    "h": "all",
-    "x": "all",
-    "rz": "all",
-    "cx": [
-      [0, 1],
-      [1, 0],
-      [1, 2],
-      [2, 1]
-    ]
-  },
-  "swap_graph": [
-    [0, 1],
-    [1, 2]
-  ]
+  "num_qubits": 6,
+  "phys_connect": {
+    "preset": "grid",
+    "rows": 2,
+    "cols": 3
+  }
 }

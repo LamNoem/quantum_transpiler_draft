@@ -504,3 +504,32 @@ Input	                  An existing quantum circuit (often containing generic or
 Output                  An optimized, hardware-compatible quantum circuit (still represented as gates).	      A low-level quantum circuit OR a physical pulse control schedule (waveforms/lasers).
 Level of Abstraction	Horizontal (stays within the "gate and circuit" abstraction layer).	                  Vertical (lowers the code to a lower level of hardware abstraction).
 Primary Goal	      Optimization for physical topology, routing, and noise reduction.	                        Algorithm synthesis or generation of actual physical hardware instructions.
+
+
+-------------------------------------------------------------------
+input target simplifications
+Homogeneous architecture: Uniform native gate availability across all physical qubits and connections, with bidirectional two-qubit support.
+
+
+
+Idealized gates: No gate, measurement, or reset error modeling; no decoherence, leakage, or crosstalk.
+
+
+
+Unweighted operations: No gate durations, calibration-dependent costs, or execution-time optimization.
+
+
+
+Unrestricted gate parameters: All angles of a supported parameterized gate are assumed available.
+
+
+
+Static topology: Fixed physical connectivity, with SWAP capability assumed on every edge.
+
+
+
+Unrestricted parallelism: Operations on independent qubits are assumed executable simultaneously, ignoring control-electronics constraints.
+
+
+
+Limited execution model: Measurement, reset, feedforward, pulse-level scheduling, and dynamic qubit movement are not represented.
