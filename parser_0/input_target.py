@@ -42,21 +42,21 @@ class Target:
     def __init__(self, hardware_spec_file: str):
         self.target_file = hardware_spec_file
         #from load given target
-        self.target_dict
-        self.native_set
-        self.num_qubits
-        self.gate_arities
-        self.native_gates
+        self.target_dict = None
+        self.native_set =None
+        self.num_qubits = None
+        self.gate_arities = None
+        self.native_gates = None
 
         #from load into graph
         #physical connectivity
-        self.physical_edges
-        self.physical_graph
-        self.swap_graph
+        self.physical_edges = None
+        self.physical_graph = None
+        self.swap_graph = None
 
         #gate connectivity
-        self.gate_connect_qargs
-        self.gate_connect_graphs
+        self.gate_connect_qargs = None
+        self.gate_connect_graphs = None
         self.load_given_target()
         self.load_into_graph()
 

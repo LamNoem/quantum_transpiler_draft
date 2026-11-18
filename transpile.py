@@ -1,9 +1,10 @@
 from general.log_config import logging
-from general.visualization import plot_parser_0, plot_norm_dag, plot_optim_dag
+from general.visualization import plot_parser_0, plot_norm_dag, plot_optim_dag, plot_placement
 from parser_0.parse_validate_qasm3 import parser_0
 from parser_0.input_target import Target
 from normalization_1.norm import Norm
 from simple_optim_2.optim_gates import OptimGates
+from placement_3.placement import Placer
 
 logger = logging.getLogger(__name__)
 
@@ -50,5 +51,12 @@ logger.info(f"Stage2 Optimizer done")
 plot_optim_dag(optim_dag.optim_dag)
 
 
+############ stage 3 #################
+logger.info("stage 3: placement")
+
+placer = Placer(optim_dag.optim_dag,target_specs)
+
+logger.info(f"mapping: {placer.mapping}")
+plot_placement(placer.mapping, target_specs)
 
 

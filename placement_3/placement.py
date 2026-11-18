@@ -37,11 +37,29 @@ class Placer:
 
         # i prefer for these to be assined explicitly when possible in as little palces as possible, mnimizes confusion
         self.interact_matrix = self.build_interact_matrix()
-        self.mapping_cost = None #sum of best costs chosen within place() and place_remaining()
         self.mapping = self.heuristic_initial_placement()
+        self.mapping_cost = self.evaluate_mapping()
 
         
- 
+    def evaluate_mapping(self):
+        n = self.circuit.num_qubits()
+        total_cost = 0
+
+        #only upper triangle bc symmetrical
+        for i in range(n):
+            for j in range(i + 1, n):
+                interactions = int(self.interact_matrix[i, j])
+
+                physical_i = self.mapping[i]
+                physical_j = self.mapping[j]
+
+                distance = self.distances[physical_i][physical_j]
+
+                pair_cost = interactions * (distance - 1)
+                total_cost += pair_cost
+
+        return total_cost
+    
     def num_free_neighbours(self, p, free, reserved):
         """Count free neighbours of physical qubit p, excluding reserved sites (usually the free physical qubits being considered)."""
         G = self.hardware.physical_graph
@@ -89,8 +107,10 @@ class Placer:
                 # current hardware connectivity is bidirectional.
                 interacts[control_index, target_index] += 1
                 interacts[target_index, control_index] += 1
+                
 
         # self.interact_matrix = interacts
+        return interacts
 
     def place(self, interacts, pair, mapping):
         """Assign one or both members of a logical pair to free physical sites."""
@@ -125,7 +145,7 @@ class Placer:
                     best_cost = current_cost
                     best_pair = pp
 
-            self.mapping_cost += best_cost
+            
             mapping[q1], mapping[q2] = best_pair
 
         else:
@@ -168,6 +188,7 @@ class Placer:
                     best_cost = current_cost
                     best_physical = p
 
+            
             mapping[unplaced_q] = best_physical
 
     def place_remaining(self, unplaced, mapping):
@@ -192,19 +213,27 @@ class Placer:
                     best_cost = current_cost
                     best_physical = p
 
-            self.mapping_cost += best_cost
+            
             mapping[unplaced_q] = best_physical
 
     def heuristic_initial_placement(self):
         """
-        Ideally, nobody should have to SWAP beds just to have an affair.
-        Keep wives, husbands and mistresses close.
+        old strat:        Ideally, nobody should have to SWAP beds just to have an affair.
+                            Keep wives, husbands and mistresses close.
 
-        Pick frequently interacting logical pairs, favouring pairs with a
-        highly active member. Place each pair without moving existing ones.
-        Routing (including real SWAP gates) belongs to the next stage.
+                            Pick frequently interacting logical pairs, favouring pairs with a
+                            highly active member. Place each pair without moving existing ones.
+                            Routing (including real SWAP gates) belongs to the next stage.
+
+        fix: test new jensen huang heuristic placer, weighting is done differently
+        - logical qubits with a high diversity of interactions are prioritized instead, 
+        - high frequency within one pair less prioritized
+        - binary interact matrix then, scores = has_interact(i,j)*(div(i) + div(j)), for each (i,j)
+        -improvent: both endpoint contribute to weighting, number of total interactions/interact_freq, no longer contributes.
+        - essentially the interact pairs with the most popular qubits are placed first
         """
         num_qubits = self.circuit.num_qubits()
+
         if self.interact_matrix is None:
             self.interact_matrix = self.build_interact_matrix()
 
@@ -212,8 +241,13 @@ class Placer:
 
         # Matrix is symmetric, but row weighting intentionally need not be.
         # Each candidate orientation is considered by the search below.
-        weights = np.sum(interacts, axis=1, keepdims=True)
-        scores = weights * interacts
+        # weights = np.sum(interacts, axis=1, keepdims=True)
+        # scores = weights * interacts
+        #fix: scores = has_interact(i,j)*(div(i) + div(j)), for each (i,j) -> jensen huang scoring
+
+        binary = (interacts >0).astype(int)
+        diversity = binary.sum(axis=1, keepdims = True)
+        scores =  (diversity + diversity.T)*binary
 
         placed = set()
         unplaced = set(range(num_qubits))
@@ -234,7 +268,7 @@ class Placer:
             ]
 
             if placed_subset:
-                pair = self.highest_scoring_pair(placed_subset, scores)
+                pair = max(placed_subset, key=lambda x: scores[x])
             else:
                 # No positive-weight edge crosses from placed to unplaced.
                 # Start the next disconnected logical interaction group.
@@ -248,7 +282,7 @@ class Placer:
                 if not unplaced_subset:
                     break  # Remaining qubits have no CX interactions.
 
-                pair = max(placed_subset, key=lambda x: scores[x])
+                pair = max(unplaced_subset, key=lambda x: scores[x])
 
             # The pair describes interacting qubits; it is NOT necessarily
             # (control, target), because the interaction matrix is symmetric.
