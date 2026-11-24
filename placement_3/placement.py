@@ -1,4 +1,72 @@
 
+"""
+Heuristic Placer - DiversityOfInteraction-First and Frequency-Aware Initial Placement
+
+Goal:
+    Prioritize logical qubits with many distinct CX interaction
+    partners, placing popular qubits early and preserving nearby
+    physical locations for their other partners.
+
+    Keep the players close to their mistresses, without forgetting
+    about the wives.
+
+Algorithm:
+    1. Build a symmetric CX interaction matrix W:
+           W[i,j] = number of CX gates between logical qubits i and j
+       Control-target direction is ignored for placement.
+
+    2. Convert W into a binary interaction matrix B:
+           B[i,j] = 1 if W[i,j] > 0, otherwise 0
+
+    3. Calculate the interaction diversity of each logical qubit:
+           D[i] = sum(B[i,j]) over all j
+
+       D[i] counts DISTINCT interaction partners, not total CX gates.
+
+    4. Score each interacting logical pair:
+           S[i,j] = B[i,j] * (D[i] + D[j])
+
+       Higher scores prioritize pairs containing highly diverse qubits.
+       Individual CX frequency does not affect this pair score.
+
+    5. Greedily select logical pairs:
+       - Start with the highest-scoring pair and place both qubits.
+       - Continue selecting pairs connecting placed and unplaced qubits.
+       - When no such interactions remain, start a new logical group.
+       - Never move an already-placed logical qubit.
+
+    6. Select physical locations using different priorities:
+
+       BOTH QUBITS UNPLACED:
+       - Minimize physical distance between the selected pair.
+       - Preserve free physical neighbours, weighted by diversity.
+       - Prefer central physical locations, weighted by diversity.
+       - CX frequency is not used in this decision.
+
+       ONE QUBIT UNPLACED:
+       - Minimize distance to its selected, already-placed partner.
+       - Next, minimize CX-frequency-weighted distance to all
+         other already-placed logical qubits.
+       - Prefer locations with more free neighbours.
+       - Use physical centrality and node index as final tie-breakers.
+
+    7. Assign CX-isolated logical qubits to remaining physical sites,
+       prioritizing centrality and connectivity.
+
+Evaluation:
+    After placement, calculate the frequency-weighted excess
+    physical distance:
+
+        C = sum(W[i,j] * (distance(i,j) - 1)) for all i < j
+
+    Lower cost is better. This estimates routing difficulty;
+    it is NOT the actual number of SWAP gates required.
+
+Output:
+    A complete, one-to-one logical-to-physical qubit mapping.
+    The logical DAG is unchanged. No routing SWAPs are inserted.
+"""
+
 import copy
 from itertools import permutations
 
@@ -35,17 +103,15 @@ class Placer:
             for p in G.nodes
         }
 
-        # i prefer for these to be assined explicitly when possible in as little palces as possible, mnimizes confusion
         self.interact_matrix = self.build_interact_matrix()
         self.mapping = self.heuristic_initial_placement()
         self.mapping_cost = self.evaluate_mapping()
 
-        
     def evaluate_mapping(self):
         n = self.circuit.num_qubits()
         total_cost = 0
 
-        #only upper triangle bc symmetrical
+        # Only upper triangle because the interaction matrix is symmetric.
         for i in range(n):
             for j in range(i + 1, n):
                 interactions = int(self.interact_matrix[i, j])
@@ -59,9 +125,9 @@ class Placer:
                 total_cost += pair_cost
 
         return total_cost
-    
+
     def num_free_neighbours(self, p, free, reserved):
-        """Count free neighbours of physical qubit p, excluding reserved sites (usually the free physical qubits being considered)."""
+        """Count free neighbours of physical qubit p, excluding reserved sites."""
         G = self.hardware.physical_graph
         return sum(
             neighbour in free and neighbour not in reserved
@@ -79,7 +145,7 @@ class Placer:
 
             # 2. Preserve free neighbours around more popular logical qubits.
             -(
-                popularity1 * self.num_free_neighbours(p1, free, reserved) #num free neighbours around p1 and p2 that are not p1 or p2
+                popularity1 * self.num_free_neighbours(p1, free, reserved)
                 + popularity2 * self.num_free_neighbours(p2, free, reserved)
             ),
 
@@ -90,7 +156,6 @@ class Placer:
             # 4. Ensure repeatable results when all other scores tie.
             pp,
         )
-
 
     def build_interact_matrix(self):
         """Count CX interactions between logical qubits in the optimized DAG."""
@@ -107,9 +172,7 @@ class Placer:
                 # current hardware connectivity is bidirectional.
                 interacts[control_index, target_index] += 1
                 interacts[target_index, control_index] += 1
-                
 
-        # self.interact_matrix = interacts
         return interacts
 
     def place(self, interacts, pair, mapping):
@@ -117,7 +180,6 @@ class Placer:
         G = self.hardware.physical_graph
         q1, q2 = pair
 
-        # A pair is a tuple; iterating over it returns q1 and q2.
         # 'new' contains only the logical qubits not assigned yet.
         new = [q for q in pair if q not in mapping]
         if not new:
@@ -131,8 +193,8 @@ class Placer:
         if len(new) == 2:
             # First pair, or first pair of a new disconnected logical group:
             # assign both logical qubits together.
-            popularity1 = int(interacts[q1].sum())
-            popularity2 = int(interacts[q2].sum())
+            popularity1 = int(np.count_nonzero(interacts[q1]))
+            popularity2 = int(np.count_nonzero(interacts[q2]))
 
             best_pair = None
             best_cost = None
@@ -145,7 +207,6 @@ class Placer:
                     best_cost = current_cost
                     best_pair = pp
 
-            
             mapping[q1], mapping[q2] = best_pair
 
         else:
@@ -159,25 +220,23 @@ class Placer:
             best_cost = None
 
             for p in free:
-                # Also consider this qubit's OTHER previously placed partners
-                # when several sites are equally close to the selected one.
-                # for each free phys q
-                other_partner_cost = sum( #for each logic and phys already mapped
-                    int(interacts[unplaced_q, other_q])  # num of interacts btwn the log unplaced and log placed  (multiplied by)
-                    * self.distances[p][other_physical] # the distance from the free phys q to th ephys q of this log placed 
+
+                # CX-frequency-weighted distance to already-placed qubits.
+                placed_partner_cost = sum(
+                    int(interacts[unplaced_q, other_q])
+                    * self.distances[p][other_physical]
                     for other_q, other_physical in mapping.items()
-                )  # essentially (does th eunplaced qubit interact alot with this placed log qubit)*(is this free physical qubit a smart placement for this relationship)
-                #summed up: is this free phys_q a smart choice to couple (the unmapped log_q) to an already placed logical_q (if they interact a lot)
+                )
 
                 current_cost = (
                     # 1. Prefer a direct connection to the selected partner.
                     self.distances[p][partner_physical],
 
                     # 2. Then prefer proximity to its other placed partners.
-                    other_partner_cost,
+                    placed_partner_cost,
 
                     # 3. Preserve free neighbours for later placements.
-                    -self.num_free_neighbours(p, free, {p}), #number of free neighbours around p that is not p. so a phys q with alot of free neighbours left is prioritized
+                    -self.num_free_neighbours(p, free, {p}),
 
                     # 4. Use centrality and index for remaining ties.
                     self.centrality[p],
@@ -188,7 +247,6 @@ class Placer:
                     best_cost = current_cost
                     best_physical = p
 
-            
             mapping[unplaced_q] = best_physical
 
     def place_remaining(self, unplaced, mapping):
@@ -213,25 +271,9 @@ class Placer:
                     best_cost = current_cost
                     best_physical = p
 
-            
             mapping[unplaced_q] = best_physical
 
     def heuristic_initial_placement(self):
-        """
-        old strat:        Ideally, nobody should have to SWAP beds just to have an affair.
-                            Keep wives, husbands and mistresses close.
-
-                            Pick frequently interacting logical pairs, favouring pairs with a
-                            highly active member. Place each pair without moving existing ones.
-                            Routing (including real SWAP gates) belongs to the next stage.
-
-        fix: test new jensen huang heuristic placer, weighting is done differently
-        - logical qubits with a high diversity of interactions are prioritized instead, 
-        - high frequency within one pair less prioritized
-        - binary interact matrix then, scores = has_interact(i,j)*(div(i) + div(j)), for each (i,j)
-        -improvent: both endpoint contribute to weighting, number of total interactions/interact_freq, no longer contributes.
-        - essentially the interact pairs with the most popular qubits are placed first
-        """
         num_qubits = self.circuit.num_qubits()
 
         if self.interact_matrix is None:
@@ -239,15 +281,9 @@ class Placer:
 
         interacts = self.interact_matrix
 
-        # Matrix is symmetric, but row weighting intentionally need not be.
-        # Each candidate orientation is considered by the search below.
-        # weights = np.sum(interacts, axis=1, keepdims=True)
-        # scores = weights * interacts
-        #fix: scores = has_interact(i,j)*(div(i) + div(j)), for each (i,j) -> jensen huang scoring
-
-        binary = (interacts >0).astype(int)
-        diversity = binary.sum(axis=1, keepdims = True)
-        scores =  (diversity + diversity.T)*binary
+        binary = (interacts > 0).astype(int)
+        diversity = binary.sum(axis=1, keepdims=True)
+        scores = (diversity + diversity.T) * binary
 
         placed = set()
         unplaced = set(range(num_qubits))
@@ -302,5 +338,4 @@ class Placer:
         if len(set(mapping.values())) != num_qubits:
             raise ValueError("Multiple logical qubits share a physical location")
 
-        # self.mapping = mapping.copy()
         return mapping
