@@ -8,6 +8,8 @@ Notes for imporved version:
 external benchmark tools, MLIR/LLVM, 
 for a set of known native gates (accept target, lower to an efficient IR/InternalGateSet according to target, optimize, placement/routing, native translation, optimize again. all while keeping native rep in mind)
 derive swap graph
+catalyst
+fpga dumby next stage
 
 
 maybe ask chat to compare this to current transpilers/compilers and consider the tradeoffs

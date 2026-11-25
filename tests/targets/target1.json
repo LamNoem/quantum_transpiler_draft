@@ -2,6 +2,8 @@
   "native_set": "demo_cx",
   "num_qubits": 6,
   "phys_connect": {
-    "preset": "line"
+    "preset": "line",
+    "rows": 2,
+    "cols": 3
   }
 }
