@@ -3,10 +3,6 @@ learn about quantum gates
 do logging for all steps
 
 
-placer needs better heuristic (frequency wighting not good idea, diversity weighting is probably better), test the new placer weighting
-
-then implement router from current pseudo code
-
-
+todo: move on to stage 5
 
 is the equivalence check after optimizer correct?

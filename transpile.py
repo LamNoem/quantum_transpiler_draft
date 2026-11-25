@@ -1,5 +1,5 @@
 from general.log_config import logging
-from general.visualization import plot_parser_0, plot_norm_dag, plot_optim_dag, plot_placement
+from general.visualization import plot_parser_0, plot_norm_dag, plot_optim_dag, plot_placement, plot_routing
 from parser_0.parse_validate_qasm3 import parser_0
 from parser_0.input_target import Target
 from normalization_1.norm import Norm
@@ -64,25 +64,14 @@ plot_placement(placer.mapping, target_specs)
 ########## stage 4 ####################
 logger.info("stage 4: routing")
 router = Router(optim_dag.optim_dag, placer.mapping, target_specs)
+plot_routing(router, target_specs)
 
 routed_dag = router.routed_circuit
-final_mapping = router.final_mapping
+final_mapping = router.mapping
 inital_mapping = router.initial_mapping
 swap_count = router.swap_count
 bridge_count = router.bridge_count
 routing_history = router.routing_history
-step = 3
-
-history = router.routing_history[step]
-
-# print(history["action"])
-# print(history["physical_qubits"])
-# print(history["mapping"])
-
-# interim_dag = history["dag"]
-
-# interim_circuit = dag_to_circuit(interim_dag)
-# interim_circuit.draw("mpl")
 logger.info(f"swap_count: {swap_count}")
 logger.info(f"bridge_count: {bridge_count}")
 logger.info(f"final_mapping: {final_mapping}")

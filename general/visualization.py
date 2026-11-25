@@ -7,8 +7,10 @@ import shutil
 import sys
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 import networkx as nx
 import rustworkx as rx
+from qiskit.converters import dag_to_circuit
 from qiskit.visualization import dag_drawer
 
 
@@ -93,6 +95,13 @@ def _physical_figure_size(positions):
     )
 
 
+def _configure_graphviz():
+    """Find the portable Graphviz installation when it is not on PATH."""
+    graphviz_bin = Path(sys.prefix) / "graphviz" / "bin"
+    if shutil.which("dot") is None and (graphviz_bin / "dot.exe").is_file():
+        os.environ["PATH"] = str(graphviz_bin) + os.pathsep + os.environ.get("PATH", "")
+
+
 def plot_parser_0(raw_input_circuit, target_specs):
     """Save and display the input circuit, target connectivity, and circuit DAG."""
     output_dir = Path(__file__).resolve().parent.parent /"visuals"/"parser"
@@ -143,11 +152,7 @@ def plot_parser_0(raw_input_circuit, target_specs):
         axes.set_axis_off()
         figure.savefig(filename, dpi=150)
 
-    # Support the portable Graphviz installation in this virtual environment.
-    graphviz_bin = Path(sys.prefix) / "graphviz" / "bin"
-    if shutil.which("dot") is None and (graphviz_bin / "dot.exe").is_file():
-        os.environ["PATH"] = str(graphviz_bin) + os.pathsep + os.environ.get("PATH", "")
-
+    _configure_graphviz()
     dag_image = dag_drawer(raw_input_circuit.DAG_circuit)
     dag_image.save(output_dir / "circuit_dag.png")
     dag_figure, dag_axes = plt.subplots(num="Circuit DAG", figsize=(8, 8), layout="constrained")
@@ -186,16 +191,8 @@ def plot_optim_dag(norm_dag):
     # plt.show()
 
 
-def plot_placement(mapping, target_specs):
-    """Save the logical-to-physical mapping without opening plot windows.
-
-    ``mapping`` maps logical qubit indices to physical node indices.
-    Blue nodes are assigned; gray nodes are unused physical qubits.
-    """
-    output_dir = Path(__file__).resolve().parent.parent / "visuals" / "placement"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    graph = target_specs.physical_graph
+def _draw_physical_mapping(mapping, graph, positions, axes):
+    """Overlay logical qubits on a physical topology using its fixed geometry."""
     physical_to_logical = {physical: logical for logical, physical in mapping.items()}
     labels = {
         physical: (
@@ -210,11 +207,6 @@ def plot_placement(mapping, target_specs):
         for physical in graph.nodes
     ]
 
-    positions = physical_layout(target_specs)
-    figure, axes = plt.subplots(
-        num="Initial placement", figsize=_physical_figure_size(positions),
-        layout="constrained", clear=True
-    )
     nx.draw_networkx(
         graph,
         pos=positions,
@@ -235,7 +227,128 @@ def plot_placement(mapping, target_specs):
         axes.set_ylim(ys[0] - 0.5, ys[0] + 0.5)
     axes.set_aspect("equal")
     axes.set_axis_off()
+
+
+def plot_placement(mapping, target_specs):
+    """Save the logical-to-physical mapping without opening plot windows.
+
+    ``mapping`` maps logical qubit indices to physical node indices.
+    Blue nodes are assigned; gray nodes are unused physical qubits.
+    """
+    output_dir = Path(__file__).resolve().parent.parent / "visuals" / "placement"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    positions = physical_layout(target_specs)
+    figure, axes = plt.subplots(
+        num="Initial placement", figsize=_physical_figure_size(positions),
+        layout="constrained", clear=True
+    )
+    _draw_physical_mapping(mapping, target_specs.physical_graph, positions, axes)
     figure.savefig(output_dir / "physical_mapping.png", dpi=150)
 
     plt.close(figure)
     return figure
+
+
+def plot_routing(router, target_specs):
+    """Save routing results under ``visuals/routing`` without showing windows.
+
+    Pass a completed ``Router`` and its target specification. Outputs are
+    ``routed_circuit.pdf``, ``routed_circuit_dag.png``, ``physical_mapping.png``
+    (initial and final placement), and ``routing_history.png`` (logical qubit
+    locations and emitted operation counts after each recorded action).
+
+    SWAP and bridge markers identify routing overhead even though the routed
+    circuit contains their CX decompositions. All circuit wire indices are
+    physical qubit indices; q labels in the mapping/history denote logical qubits.
+    Returns a dictionary of closed Matplotlib figures for further inspection.
+    """
+    output_dir = Path(__file__).resolve().parent.parent / "visuals" / "routing"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    figures = {}
+
+    # Close only figures created here, including when an export fails.
+    try:
+        circuit = dag_to_circuit(router.routed_circuit)
+        circuit_figure = circuit.draw(output="mpl", idle_wires=True)
+        figures["circuit"] = circuit_figure
+        circuit_figure.suptitle("Routed circuit (wire indices are physical qubits)")
+        circuit_figure.savefig(output_dir / "routed_circuit.pdf", bbox_inches="tight")
+
+        _configure_graphviz()
+        dag_image = dag_drawer(router.routed_circuit)
+        dag_image.save(output_dir / "routed_circuit_dag.png")
+        dag_figure, dag_axes = plt.subplots(figsize=(8, 8), layout="constrained")
+        figures["dag"] = dag_figure
+        dag_axes.imshow(dag_image)
+        dag_axes.set_title("Routed circuit DAG (physical qubits)")
+        dag_axes.set_axis_off()
+
+        positions = physical_layout(target_specs)
+        width, height = _physical_figure_size(positions)
+        mapping_figure, mapping_axes = plt.subplots(
+            1, 2, figsize=(2 * width, height), layout="constrained"
+        )
+        figures["mapping"] = mapping_figure
+        for axes, mapping, title in zip(
+            mapping_axes,
+            (router.initial_mapping, router.mapping),
+            ("Initial placement", "Final placement"),
+        ):
+            _draw_physical_mapping(mapping, target_specs.physical_graph, positions, axes)
+            axes.set_title(title)
+        mapping_figure.suptitle(
+            f"Routing: {router.swap_count} SWAPs, {router.bridge_count} bridges\n"
+            "p = physical qubit, q = logical qubit; gray = unused"
+        )
+        mapping_figure.savefig(output_dir / "physical_mapping.png", dpi=150)
+
+        history = router.routing_history
+        steps = list(range(len(history)))
+        history_figure, (mapping_axes, size_axes) = plt.subplots(
+            2, 1, sharex=True,
+            figsize=(12, max(7, 0.4 * target_specs.num_qubits + 4)),
+            layout="constrained",
+        )
+        figures["history"] = history_figure
+        for logical in sorted(router.initial_mapping):
+            mapping_axes.step(
+                steps, [entry["mapping"][logical] for entry in history],
+                where="post", marker=".", label=f"q{logical}",
+            )
+        mapping_axes.set_yticks(sorted(target_specs.physical_graph))
+        mapping_axes.set_ylabel("Physical qubit")
+        mapping_axes.set_title("Logical qubit locations after each routing step")
+        if router.initial_mapping:
+            mapping_axes.legend(title="Logical qubit", loc="upper left", bbox_to_anchor=(1, 1))
+        mapping_axes.grid(alpha=0.25)
+
+        sizes = [entry["circuit_size"] for entry in history]
+        size_axes.step(
+            steps, sizes, where="post", marker=".", color="steelblue",
+            label="Emitted operations",
+        )
+        for action, color, marker, label in (
+            ("swap", "darkorange", "s", "SWAP (+3 CX)"),
+            ("bridge", "purple", "D", "Bridge (4 CX for 1 logical CX)"),
+        ):
+            indices = [i for i, entry in enumerate(history) if entry["action"] == action]
+            if indices:
+                size_axes.scatter(
+                    indices, [sizes[i] for i in indices], color=color,
+                    marker=marker, label=label, zorder=3,
+                )
+        size_axes.set_xlabel("Routing step (0 = initial placement)")
+        size_axes.set_ylabel("Emitted operations")
+        size_axes.xaxis.set_major_locator(MaxNLocator(integer=True))
+        size_axes.yaxis.set_major_locator(MaxNLocator(integer=True))
+        size_axes.set_xlim(-0.5, max(0.5, len(history) - 0.5))
+        size_axes.set_ylim(bottom=-0.5)
+        size_axes.grid(alpha=0.25)
+        size_axes.legend(loc="upper left", bbox_to_anchor=(1, 1))
+        history_figure.savefig(output_dir / "routing_history.png", dpi=150)
+    finally:
+        for figure in figures.values():
+            plt.close(figure)
+
+    return figures
