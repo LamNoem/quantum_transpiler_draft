@@ -1,11 +1,15 @@
 from general.log_config import logging
-from general.visualization import plot_parser_0, plot_norm_dag, plot_optim_dag, plot_placement, plot_routing
+from general.visualization import (
+    plot_parser_0, plot_norm_dag, plot_optim_dag, plot_placement, plot_routing,
+    plot_native_translation,
+)
 from parser_0.parse_validate_qasm3 import parser_0
 from parser_0.input_target import Target
 from normalization_1.norm import Norm
 from simple_optim_2.optim_gates import OptimGates
 from placement_3.placement import Placer
 from routing_4.router import Router
+from native_translation_5.native_translator import ToNativeTranslator
 
 logger = logging.getLogger(__name__)
 
@@ -79,3 +83,13 @@ logger.info(f"ROUTING HISTORY: {routing_history}") #improvement: each stage shou
                                                     #their version of this routing history. maybe converted to json.
 
 logger.info("stage 4: routing done")
+###############stage5#####################
+logger.info("stage 5: native translation")
+
+native = ToNativeTranslator(routed_dag,target_specs)
+
+native_dag = native.native_dag
+translation_history = native.translation_history
+plot_native_translation(native)
+
+logger.info("stage 5: native translation done")

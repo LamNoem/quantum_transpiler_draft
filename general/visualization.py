@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import networkx as nx
 import rustworkx as rx
+from qiskit.circuit import Barrier, Measure
 from qiskit.converters import dag_to_circuit
 from qiskit.visualization import dag_drawer
 
@@ -347,6 +348,133 @@ def plot_routing(router, target_specs):
         size_axes.grid(alpha=0.25)
         size_axes.legend(loc="upper left", bbox_to_anchor=(1, 1))
         history_figure.savefig(output_dir / "routing_history.png", dpi=150)
+    finally:
+        for figure in figures.values():
+            plt.close(figure)
+
+    return figures
+
+
+def plot_native_translation(translator):
+    """Save stage-5 results under ``visuals/native_translation`` without showing.
+
+    Pass a completed ``ToNativeTranslator``. Outputs are ``native_circuit.pdf``,
+    ``native_circuit_dag.png``, ``gate_counts.png`` (routed versus native gates),
+    and ``translation_history.png`` (native/nonnative gate counts and total
+    circuit size after each decision, with gate replacements highlighted).
+
+    Circuit wire indices remain physical qubit indices. Gate counts exclude
+    barriers and measurements; total circuit size includes them. Returns a
+    dictionary of closed Matplotlib figures, as ``plot_routing`` does.
+    """
+    output_dir = Path(__file__).resolve().parent.parent / "visuals" / "native_translation"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    figures = {}
+
+    try:
+        circuit = dag_to_circuit(translator.native_dag)
+        circuit_figure = circuit.draw(output="mpl", idle_wires=True)
+        figures["circuit"] = circuit_figure
+        circuit_figure.axes[0].set_title(
+            f"Native circuit: {translator.native_set} (wire indices are physical qubits)",
+            pad=24,
+        )
+        circuit_figure.savefig(output_dir / "native_circuit.pdf", bbox_inches="tight")
+
+        _configure_graphviz()
+        dag_image = dag_drawer(translator.native_dag)
+        dag_image.save(output_dir / "native_circuit_dag.png")
+        dag_figure, dag_axes = plt.subplots(figsize=(8, 8), layout="constrained")
+        figures["dag"] = dag_figure
+        dag_axes.imshow(dag_image)
+        dag_axes.set_title(f"Native circuit DAG: {translator.native_set} (physical qubits)")
+        dag_axes.set_axis_off()
+
+        before = translator.orig_dag.count_ops()
+        after = translator.native_dag.count_ops()
+        gate_names = sorted((set(before) | set(after)) - {"barrier", "measure"})
+        counts_figure, counts_axes = plt.subplots(
+            figsize=(max(8, len(gate_names)), 5), layout="constrained"
+        )
+        figures["counts"] = counts_figure
+        if gate_names:
+            for offset, counts, label, color in (
+                (-0.2, before, "Routed input", "steelblue"),
+                (0.2, after, "Native output", "seagreen"),
+            ):
+                bars = counts_axes.bar(
+                    [i + offset for i in range(len(gate_names))],
+                    [counts.get(name, 0) for name in gate_names],
+                    width=0.4, label=label, color=color,
+                )
+                counts_axes.bar_label(bars, padding=3)
+            counts_axes.legend()
+        else:
+            counts_axes.text(
+                0.5, 0.5, "No gates to translate", ha="center", va="center",
+                transform=counts_axes.transAxes,
+            )
+        counts_axes.set_xticks(range(len(gate_names)), gate_names)
+        counts_axes.set_title(
+            f"Native gate translation: {translator.native_set}\n"
+            "Gate counts (barriers and measurements excluded)"
+        )
+        counts_axes.set_xlabel("Gate")
+        counts_axes.set_ylabel("Count")
+        counts_axes.yaxis.set_major_locator(MaxNLocator(integer=True))
+        counts_axes.set_ylim(bottom=0)
+        counts_axes.margins(y=0.15)
+        counts_figure.savefig(output_dir / "gate_counts.png", dpi=150)
+
+        history = translator.translation_history
+        steps = [entry["step"] for entry in history]
+        native_counts, nonnative_counts = [], []
+        for entry in history:
+            gates = [
+                node for node in entry["dag"].op_nodes()
+                if not isinstance(node.op, (Barrier, Measure))
+            ]
+            native_count = sum(translator.is_native_gate(node.op) for node in gates)
+            native_counts.append(native_count)
+            nonnative_counts.append(len(gates) - native_count)
+
+        history_figure, (gates_axes, size_axes) = plt.subplots(
+            2, 1, sharex=True, figsize=(12, 7), layout="constrained"
+        )
+        figures["history"] = history_figure
+        gates_axes.step(
+            steps, native_counts, where="post", marker=".",
+            label="Native gates", color="seagreen",
+        )
+        gates_axes.step(
+            steps, nonnative_counts, where="post", marker=".",
+            label="Nonnative gates remaining", color="darkorange",
+        )
+        gates_axes.set_title(f"Translation progress: {translator.native_set}")
+        gates_axes.set_ylabel("Gate count")
+
+        sizes = [entry["circuit_size"] for entry in history]
+        size_axes.step(
+            steps, sizes, where="post", marker=".", color="steelblue",
+            label="Total circuit operations",
+        )
+        replacements = [entry for entry in history if entry["action"] == "translate"]
+        if replacements:
+            size_axes.scatter(
+                [entry["step"] for entry in replacements],
+                [entry["circuit_size"] for entry in replacements],
+                color="purple", marker="D", label="Gate replacement", zorder=3,
+            )
+        size_axes.set_xlabel("Translation step (0 = routed input)")
+        size_axes.set_ylabel("Operations (including barriers/measurements)")
+        size_axes.xaxis.set_major_locator(MaxNLocator(integer=True))
+        size_axes.set_xlim(steps[0] - 0.5, steps[-1] + 0.5)
+        for axes in (gates_axes, size_axes):
+            axes.yaxis.set_major_locator(MaxNLocator(integer=True))
+            axes.set_ylim(bottom=-0.5)
+            axes.grid(alpha=0.25)
+            axes.legend(loc="upper left", bbox_to_anchor=(1, 1))
+        history_figure.savefig(output_dir / "translation_history.png", dpi=150)
     finally:
         for figure in figures.values():
             plt.close(figure)

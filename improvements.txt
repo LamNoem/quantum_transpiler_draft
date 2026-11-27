@@ -11,5 +11,6 @@ derive swap graph
 catalyst
 fpga dumby next stage
 
+what happenswhen a circuit is not poissible to be implemented on a given structure?
 
 maybe ask chat to compare this to current transpilers/compilers and consider the tradeoffs

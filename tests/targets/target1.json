@@ -1,9 +1,7 @@
 {
-  "native_set": "demo_cx",
+  "native_set": "ibm_ecr",
   "num_qubits": 6,
   "phys_connect": {
-    "preset": "line",
-    "rows": 2,
-    "cols": 3
+    "preset": "line"
   }
 }
